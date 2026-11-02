@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>numoo design system</title>
+<link rel="stylesheet" href="assets/numoo.css">
+<style>
+  .swatch{border-radius:10px;block-size:64px;border:1px solid var(--line)}
+  .spec{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  .demo{border:1px dashed var(--line);border-radius:var(--r-card);padding:20px;background:var(--surface)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Design system for the numoo concept. Tokens here match the stylesheet the prototype runs on.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="panel--grad panel" style="padding:clamp(28px,4.5vw,64px)">
+        <div class="glowbg glowbg--b" style="inset-block-start:-200px;inset-inline-end:-120px;opacity:.6"></div>
+        <div class="split split--center z1">
+          <div class="stack stack-5">
+            <nav class="crumb" aria-label="Breadcrumb" style="color:rgba(255,255,255,.75)"><a href="index.html">Home</a><span>/</span><span>Design system</span></nav>
+            <h1 class="display h-hero">One loop, carried everywhere.</h1>
+            <p style="opacity:.9;max-width:52ch;font-size:1.1rem">The wordmark already holds the system: two loops that close. The interface is photo-led, set in a round geometric sans that shares the logo&rsquo;s drawing, and lit by the blue-to-cyan light of the mark.</p>
+          </div>
+          <div class="stack stack-4" style="align-items:center">
+            <span class="inf inf--xl" style="color:#fff;inline-size:260px;block-size:118px"></span>
+            <span class="mark__img" style="background-color:#fff;width:220px;height:36px"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">The mark</h2>
+      <div class="grid g-3">
+        <div class="card stack stack-4"><span class="mark__img" style="width:150px;height:24px"></span>
+          <span class="h3">Wordmark</span>
+          <p class="sm muted">Used at a single weight, tinted from the current text colour rather than shipped in two files. It inherits the theme, so there is no wrong version on a dark background.</p>
+          <span class="spec">mask-image, background-color: currentColor</span></div>
+        <div class="card stack stack-4"><span class="inf" style="inline-size:64px;block-size:29px;color:var(--cyan)"></span>
+          <span class="h3">The loop alone</span>
+          <p class="sm muted">Carries meaning rather than ornament: it marks the points where the two circuits are being described. It is never used as a generic bullet in body text.</p>
+          <span class="spec">.inf, .inf--lg</span></div>
+        <div class="card stack stack-4">
+          <div class="row" style="gap:8px" id="sigils"></div>
+          <span class="h3">Case reference marks</span>
+          <p class="sm muted">Generated from the case ID, so every case is recognisable without a photograph. Deterministic, so the same case always looks the same.</p>
+          <span class="spec">NUMOO.sigil(id)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight band--surface" style="border-block:1px solid var(--line)">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">Colour</h2>
+      <p class="body">Two hues from the logo carry the two circuits. Green, amber and red are reserved for state and are never used to tell one series from another. Neutrals are biased towards the brand blue rather than being pure greys.</p>
+      <div class="grid g-4" id="swatches"></div>
+      <div class="split">
+        <div class="stack stack-4">
+          <h3 class="h3">Chart palette</h3>
+          <p class="sm muted">Four categorical hues, validated for colour-vision deficiency separation and surface contrast in both themes before use. Two of the light-mode hues sit below 3:1 against white, so every chart that uses them also carries direct labels and a table view.</p>
+          <div class="row" id="chartpal"></div>
+          <span class="spec">worst adjacent pair &Delta;E 15.1 deutan, light &middot; 13.2 deutan, dark</span>
+        </div>
+        <div class="stack stack-4">
+          <h3 class="h3">Dark theme</h3>
+          <p class="sm muted">Chosen, not inverted. Surfaces move to a navy rather than to grey, the brand blue lightens to hold contrast, and the chart hues are re-stepped and re-validated against the darker surface.</p>
+          <button class="btn btn--line btn--sm" type="button" onclick="document.getElementById('themebtn').click()" style="align-self:start">Switch the theme and compare</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">Type</h2>
+      <div class="split">
+        <div class="stack stack-5">
+          <div class="stack stack-2"><span class="display h-hero">Outfit</span>
+            <span class="spec">display &middot; headings, numbers &middot; 500&ndash;700, tracking &minus;3.5%</span>
+            <p class="sm muted">A round geometric sans with the same circular bowls as the numoo wordmark. Set large and tight, it gives the confident, modern voice of the reference sites while staying a relative of the logo.</p></div>
+          <div class="stack stack-2"><span style="font-family:'DM Sans';font-size:2rem;font-weight:600;letter-spacing:-.01em">DM Sans</span>
+            <span class="spec">interface and body &middot; 400&ndash;700</span>
+            <p class="sm muted">Quiet and highly legible at small sizes, so forms, tables and long explanations stay calm beneath the bold headlines.</p></div>
+          <div class="stack stack-2"><span class="amount" style="font-size:1.8rem">AED 18,000.00</span>
+            <span class="spec" style="font-family:'Readex Pro'">&#1602;&#1585;&#1575;&#1569;&#1577; &#1593;&#1585;&#1576;&#1610;&#1577; &middot; Readex Pro</span>
+            <span class="spec">money &middot; Outfit with tabular figures</span>
+            <p class="sm muted">Every amount, reference, timestamp and countdown. Money that cannot be compared down a column is money a donor cannot check.</p></div>
+        </div>
+        <div class="card stack stack-4">
+          <h3 class="h3">Scale</h3>
+          <div class="stack stack-3" id="scale"></div>
+          <p class="xs mute-3">Fluid between 400px and 1280px. Body copy is held under 66 characters. Arabic switches to Readex Pro, drawn to sit with Outfit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight band--surface" style="border-block:1px solid var(--line)">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">Components</h2>
+      <div class="grid g-2">
+        <div class="demo stack stack-4"><span class="label">Buttons</span>
+          <div class="row"><button class="btn btn--primary">Support this case</button>
+            <button class="btn btn--gold">Place bid</button>
+            <button class="btn btn--line">Back</button>
+            <button class="btn btn--ghost">Skip</button>
+            <button class="btn btn--primary" disabled>Authorise</button></div>
+          <p class="xs mute-3">A control names what happens. Gold belongs to the auction circuit only. A disabled control keeps its reason in a title, never in silence.</p></div>
+
+        <div class="demo stack stack-4"><span class="label">State</span>
+          <div class="row"><span class="chip chip--brand"><span class="chip__dot"></span>Open</span>
+            <span class="chip chip--good">Paid to school</span>
+            <span class="chip chip--warn">Awaiting documents</span>
+            <span class="chip chip--gold">Lot A-018</span>
+            <span class="chip">Identity withheld</span></div>
+          <p class="xs mute-3">State is carried by shape and label as well as colour, so it survives a greyscale print and a colour-blind reader.</p></div>
+
+        <div class="demo stack stack-4"><span class="label">Funding meter</span>
+          <div class="meter"><div class="meter__track"><div class="meter__fill" data-fill="69" style="inline-size:0"></div></div>
+            <div class="meter__legend"><span class="amount">AED 12,500</span><span class="mute-3">of AED 18,000</span></div></div>
+          <p class="xs mute-3">The gradient runs blue to cyan and reverses under right-to-left, so progress always reads from the start of the line.</p></div>
+
+        <div class="demo stack stack-4"><span class="label">Wizard steps</span>
+          <div class="steps"><span class="steps__i" data-state="done"><span class="steps__n">1</span>Amount</span>
+            <span class="steps__i" data-state="current"><span class="steps__n">2</span>Details</span>
+            <span class="steps__i"><span class="steps__n">3</span>Payment</span></div>
+          <p class="xs mute-3">Numbered because the content is genuinely a sequence. Nothing else in the system is numbered.</p></div>
+
+        <div class="demo stack stack-4" style="grid-column:span 2"><span class="label">Money trail</span>
+          <div class="trail" id="trail"></div>
+          <p class="xs mute-3">The signature component. It appears on a case, on an item, on an order and on an application, because the same question is being answered each time: where is it now, and who moved it?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell grid g-2">
+      <div class="stack stack-5">
+        <h2 class="display h2">Bilingual and bidirectional</h2>
+        <p class="body sm">Every rule is written with logical properties rather than left and right, so switching to Arabic flips the layout rather than patching it. The language control in the header is live on every page.</p>
+        <ul class="stack stack-3 sm muted">
+          <li><span class="spec">margin-inline</span>, <span class="spec">padding-inline</span>, <span class="spec">inset-inline-start</span> throughout. No directional margins anywhere in the stylesheet.</li>
+          <li>Gradients, drawer transforms and select arrows are mirrored explicitly under <span class="spec">[dir="rtl"]</span>.</li>
+          <li>Numerals stay in Western Arabic figures for money, matching UAE banking and school invoices.</li>
+          <li>Arabic type selection, line height and the translation itself are a separate pass with a native writer, not a machine translation.</li>
+        </ul>
+      </div>
+      <div class="stack stack-5">
+        <h2 class="display h2">Accessibility</h2>
+        <ul class="stack stack-3 sm muted">
+          <li>Body text meets 4.5:1 and large text 3:1 in both themes. Muted greys were darkened until they did.</li>
+          <li>Every interactive element has a visible focus ring in the brand cyan, including chart bars, which are focusable buttons with amount labels.</li>
+          <li>Colour never carries meaning alone: state chips have words, chart series have direct labels and a table view.</li>
+          <li>Motion is limited to one drawn line on the diagram and the meters filling. Both stop under <span class="spec">prefers-reduced-motion</span>.</li>
+          <li>Targets are at least 40px tall. The layout reflows to one column at 600px with no horizontal scroll at 320px.</li>
+          <li>Countdowns update once a second in text, which is not announced continuously to assistive technology.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink band--tight">
+    <div class="shell stack stack-5">
+      <h2 class="display h2" style="color:#fff">What the system deliberately does not have</h2>
+      <div class="grid g-3">
+        <div class="stack stack-2"><span class="h3" style="color:#fff">Photographs of people</span>
+          <p class="sm" style="color:#A9C8DD">No component takes a beneficiary image, so no future screen can quietly introduce one.</p></div>
+        <div class="stack stack-2"><span class="h3" style="color:#fff">A single card style</span>
+          <p class="sm" style="color:#A9C8DD">Border, fill and shadow are applied by role. Four radii exist and each one means something different.</p></div>
+        <div class="stack stack-2"><span class="h3" style="color:#fff">Urgency theatre</span>
+          <p class="sm" style="color:#A9C8DD">No red counters on cases, no scarcity language. Only auction lots have a timer, because only an auction actually closes.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+  document.getElementById("sigils").innerHTML = ["EDU-024", "EDU-031", "EDU-039"].map(function (id) {
+    return N.sigil(id, "sigil--sm");
+  }).join("");
+
+  var tokens = [
+    ["--ink", "Text, dark surfaces", "#07243B"], ["--brand", "Giving circuit, primary action", "#0070C0"],
+    ["--cyan", "Accent, focus, highlights", "#28C1DE"], ["--gold-bright", "Item and auction circuit", "#D9A441"],
+    ["--good", "Verified, paid, confirmed", "#0D6E51"], ["--warn", "Needs attention, outbid", "#9A4B10"],
+    ["--paper", "Page ground, blue-biased", "#EEF4F8"], ["--line", "Borders and rules", "#D6E3EC"]
+  ];
+  document.getElementById("swatches").innerHTML = tokens.map(function (t) {
+    return '<div class="stack stack-2"><div class="swatch" style="background:var(' + t[0] + ')"></div>' +
+      '<span class="sm" style="font-weight:600">' + t[0] + '</span>' +
+      '<span class="xs muted">' + t[1] + '</span><span class="spec">' + t[2] + ' light</span></div>';
+  }).join("");
+
+  document.getElementById("chartpal").innerHTML = ["--c1", "--c2", "--c3", "--c4"].map(function (c, i) {
+    return '<div class="stack stack-2" style="flex:1;min-inline-size:110px">' +
+      '<div class="swatch" style="background:var(' + c + ');block-size:44px"></div>' +
+      '<span class="spec">' + c + ' &middot; series ' + (i + 1) + '</span></div>';
+  }).join("");
+
+  document.getElementById("scale").innerHTML = [
+    ["Mega", "h-mega", "3 → 6.6rem"], ["Hero", "h-hero", "2.5 → 4.6rem"], ["Section", "h1", "2.05 → 3.3rem"],
+    ["Subsection", "h2", "1.55 → 2.2rem"], ["Card title", "h3", "1.15 → 1.3rem"],
+    ["Body", "body", "1.0625rem"], ["Small", "sm", "0.9rem"], ["Caption", "xs", "0.8rem"]
+  ].map(function (s) {
+    return '<div class="row-between" style="gap:12px;border-bottom:1px solid var(--line-2);padding-block-end:8px">' +
+      '<span class="sm">' + s[0] + '</span><span class="spec">.' + s[1] + ' &middot; ' + s[2] + '</span></div>';
+  }).join("");
+
+  document.getElementById("trail").innerHTML = [
+    ["Received", "02 Nov, 03:22", "Cleared and reserved against the case", "done"],
+    ["Approved", "03 Nov, 11:20", "Prepared by one officer, authorised by another", "done"],
+    ["Paid", "Due 05 Nov", "To the school's independently verified account", "pending"]
+  ].map(function (t, i) {
+    return '<div class="trail__step" data-state="' + t[3] + '"><div class="trail__dot">' + (t[3] === "done" ? "✓" : i + 1) + '</div>' +
+      '<div class="stack stack-2"><div class="trail__head"><strong class="sm">' + t[0] + '</strong><span class="xs mute-3 num">' + t[1] + '</span></div>' +
+      '<span class="xs muted">' + t[2] + '</span></div></div>';
+  }).join("");
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

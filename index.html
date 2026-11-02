@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="numoo: verified education support and curated charity auctions in the UAE. Every dirham is paid to a school.">
+<link rel="icon" href="assets/numoo-infinity.png">
+<title>numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+<style>
+  /* ---- home-only composition ---- */
+  .stage{position:relative;border-radius:var(--r-xl);overflow:hidden;isolation:isolate;color:#fff;
+    display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:32px;align-items:end;
+    padding:clamp(24px,4vw,56px);min-block-size:clamp(560px,46vw,680px)}
+  .stage > img{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;z-index:-2;object-position:60% 50%}
+  .stage::after{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(90deg,rgba(3,14,32,.86) 0%,rgba(3,14,32,.55) 40%,rgba(3,14,32,.08) 70%),
+               linear-gradient(0deg,rgba(3,14,32,.55) 0%,rgba(3,14,32,0) 45%)}
+  [dir="rtl"] .stage::after{background:linear-gradient(270deg,rgba(3,14,32,.86) 0%,rgba(3,14,32,.55) 40%,rgba(3,14,32,.08) 70%),
+               linear-gradient(0deg,rgba(3,14,32,.55) 0%,rgba(3,14,32,0) 45%)}
+  .stage__copy{display:flex;flex-direction:column;gap:22px;align-self:end;max-inline-size:640px}
+  .stage__copy .lede{color:rgba(255,255,255,.86)}
+  .stage h1 .l2{display:block;background:linear-gradient(100deg,#7FD3FF 0%,#28C1DE 50%,#E9FBFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pillstat{display:inline-flex;align-items:center;gap:12px;padding:6px 16px 6px 6px;border-radius:var(--r-pill);
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-size:.88rem;align-self:flex-start}
+  [dir="rtl"] .pillstat{padding:6px 6px 6px 16px}
+  .pillstat .avatars img{border-color:rgba(255,255,255,.7)}
+  .widget{padding:22px;display:flex;flex-direction:column;gap:14px;align-self:end}
+  .widget__case{display:flex;gap:12px;align-items:center;padding:10px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line)}
+  .widget__case img{inline-size:52px;block-size:52px;border-radius:12px;object-fit:cover}
+  .impactline{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:var(--brand-wash);font-size:.86rem}
+  #qamounts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .paybtns{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}
+  .applepay{background:#000;color:#fff;border-radius:var(--r-pill);display:flex;align-items:center;justify-content:center;gap:4px;font-weight:600;border:0;cursor:pointer;font-size:.98rem}
+  @media(max-width:960px){
+    .stage{grid-template-columns:minmax(0,1fr);min-block-size:0;padding-block-start:clamp(140px,40vw,260px)}
+    .stage::after{background:linear-gradient(0deg,rgba(3,14,32,.92) 0%,rgba(3,14,32,.7) 55%,rgba(3,14,32,.1) 100%)}
+  }
+
+  .trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .trust__i{display:flex;gap:14px;align-items:center;padding:18px;border-radius:var(--r-card);background:var(--paper)}
+  @media(max-width:960px){.trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:520px){.trust{grid-template-columns:minmax(0,1fr)}}
+
+  .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(250px,auto));gap:18px}
+  .bento > *{min-inline-size:0}
+  .b-a{grid-column:1 / span 2;grid-row:1 / span 2}
+  .b-b{grid-column:3;grid-row:1}
+  .b-c{grid-column:4;grid-row:1 / span 2}
+  .b-d{grid-column:3;grid-row:2}
+  .tile{position:relative;border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;min-block-size:250px;isolation:isolate}
+  .tile > img{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;z-index:-2}
+  .tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,14,32,0) 30%,rgba(3,14,32,.82) 100%)}
+  .tile__in{padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:12px}
+  .tile .roundarrow{position:absolute;inset-block-start:18px;inset-inline-end:18px}
+  .tile--grad{background:var(--grad);justify-content:space-between}
+  .tile--grad::after{display:none}
+  .tile--light{color:var(--ink);background:var(--gold-wash)}
+  .tile--light::after{display:none}
+  @media(max-width:960px){
+    .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}
+    .b-a,.b-b,.b-c,.b-d{grid-column:auto;grid-row:auto}
+    .b-a{grid-column:1 / -1;min-block-size:380px}
+  }
+  @media(max-width:560px){.bento{grid-template-columns:minmax(0,1fr)}}
+
+  .proof{position:relative;text-align:center;padding-block:clamp(40px,6vw,90px)}
+  .proof__ph{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lift);filter:grayscale(1) contrast(1.05);transition:filter .4s}
+  .proof__ph:hover{filter:none}
+  .proof__ph img{inline-size:100%;block-size:100%;object-fit:cover}
+  .p1{inline-size:150px;block-size:180px;inset-block-start:4%;inset-inline-start:2%;transform:rotate(-5deg)}
+  .p2{inline-size:120px;block-size:120px;inset-block-end:6%;inset-inline-start:12%;transform:rotate(4deg)}
+  .p3{inline-size:140px;block-size:170px;inset-block-start:2%;inset-inline-end:3%;transform:rotate(5deg)}
+  .p4{inline-size:118px;block-size:118px;inset-block-end:8%;inset-inline-end:13%;transform:rotate(-4deg)}
+  @media(max-width:900px){.proof__ph{display:none}}
+  .mega-num{font-family:var(--display);font-weight:600;font-size:clamp(3.2rem,1.4rem + 8vw,8rem);letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+
+  .split-photo{position:relative;border-radius:var(--r-xl);overflow:hidden;min-block-size:440px}
+  .split-photo img{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover}
+  .floatcard{position:absolute;inset-block-end:20px;inset-inline-start:20px;inset-inline-end:20px;max-inline-size:340px;padding:16px 18px}
+
+  .corp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-radius:var(--r-xl);overflow:hidden;background:var(--grad);color:#fff}
+  .corp__copy{padding:clamp(28px,4.5vw,64px);display:flex;flex-direction:column;gap:20px;justify-content:center}
+  .corp__ph{position:relative;min-block-size:380px}
+  .corp__ph img{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover}
+  @media(max-width:900px){.corp{grid-template-columns:minmax(0,1fr)}.corp__ph{min-block-size:260px}}
+
+  /* proof: moving case columns */
+  .proof2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,1.35fr) repeat(2,minmax(0,1fr));gap:16px;block-size:660px;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+  .mcol{overflow:hidden;min-inline-size:0}
+  .mtrack{display:flex;flex-direction:column;gap:16px;animation:mup 46s linear infinite}
+  .mtrack--down{animation-name:mdown;animation-duration:54s}
+  #mc4{animation-duration:50s}
+  .proof2:hover .mtrack{animation-play-state:paused}
+  @keyframes mup{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 8px))}}
+  @keyframes mdown{from{transform:translateY(calc(-50% - 8px))}to{transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){.mtrack{animation:none}}
+  .mcard{position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:4/5;flex:0 0 auto;box-shadow:var(--shadow)}
+  .mcard img{inline-size:100%;block-size:100%;object-fit:cover;transition:transform .5s}
+  .mcard:hover img{transform:scale(1.05)}
+  .mcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,50,110,.08),rgba(0,40,90,.28))}
+  .mcard__label{position:absolute;inset-inline:10px;inset-block-end:10px;z-index:1;background:rgba(255,255,255,.95);border-radius:14px;padding:10px 12px;
+    display:flex;flex-direction:column;gap:6px;color:#0A1A2F;box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
+  .mcard__t{display:flex;gap:8px;justify-content:space-between;align-items:flex-start;font-size:.8rem;font-weight:600;line-height:1.3;color:#0062B8}
+  .mcard__t svg{flex:0 0 auto;margin-block-start:1px}
+  .mcard__bar{block-size:4px;border-radius:4px;background:#E2EAF2;overflow:hidden}
+  .mcard__bar i{display:block;block-size:100%;background:linear-gradient(90deg,#0062B8,#28C1DE)}
+  .mcard__m{font-size:.72rem;color:#4A5D73;display:flex;justify-content:space-between}
+  .proof2__mid{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding-inline:8px}
+  @media(max-width:1100px){.proof2{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr)}.proof2 .mcol:nth-child(1),.proof2 .mcol:nth-child(5){display:none}}
+  @media(max-width:700px){
+    .proof2{grid-template-columns:repeat(2,minmax(0,1fr));block-size:auto;-webkit-mask-image:none;mask-image:none}
+    .proof2__mid{grid-column:1 / -1;grid-row:1;padding-block:8px 20px}
+    .proof2 .mcol{block-size:440px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+  }
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf" style="color:var(--cyan)"></span><span>Concept prototype for review. Cases, lots and figures are fictional and no payment is taken.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown to prove the right-to-left layout. Full translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="stage">
+        <img src="img/hero.webp" alt="An adult hand passing a new pencil to a child above an open exercise book">
+        <div class="stage__copy">
+          <span class="pillstat">
+            <span class="avatars"><img src="img/walk.webp" alt=""><img src="img/bus.webp" alt=""><img src="img/exam.webp" alt=""></span>
+            <span><b class="num">412</b> students kept in school this year</span>
+          </span>
+          <h1 class="display h-mega"><span data-en="Keep every child" data-ar="&#1604;&#1606;&#1615;&#1576;&#1602;&#1616; &#1603;&#1604; &#1591;&#1601;&#1604;">Keep every child</span><span class="l2" data-en="in school." data-ar="&#1601;&#1610; &#1605;&#1583;&#1585;&#1587;&#1578;&#1607;.">in school.</span></h1>
+          <p class="lede" style="max-width:48ch" data-en="Fund a verified case, or donate something valuable and let the auction do the rest. Either way, the money goes to the school &mdash; never to an account." data-ar="&#1605;&#1608;&#1617;&#1604; &#1581;&#1575;&#1604;&#1577; &#1605;&#1608;&#1579;&#1617;&#1602;&#1577;&#1548; &#1571;&#1608; &#1578;&#1576;&#1585;&#1617;&#1593; &#1576;&#1602;&#1591;&#1593;&#1577; &#1579;&#1605;&#1610;&#1606;&#1577; &#1608;&#1583;&#1593; &#1575;&#1604;&#1605;&#1586;&#1575;&#1583; &#1610;&#1602;&#1608;&#1605; &#1576;&#1575;&#1604;&#1576;&#1575;&#1602;&#1610;. &#1601;&#1610; &#1575;&#1604;&#1581;&#1575;&#1604;&#1578;&#1610;&#1606; &#1610;&#1615;&#1583;&#1601;&#1593; &#1575;&#1604;&#1605;&#1576;&#1604;&#1594; &#1573;&#1604;&#1609; &#1575;&#1604;&#1605;&#1583;&#1585;&#1587;&#1577; &#1605;&#1576;&#1575;&#1588;&#1585;&#1577;.">Fund a verified case, or donate something valuable and let the auction do the rest. Either way, the money goes to the school &mdash; never to an account.</p>
+          <div class="row">
+            <a class="btn btn--primary btn--lg" href="cases.html"><span data-en="Support a case" data-ar="&#1575;&#1583;&#1593;&#1605; &#1581;&#1575;&#1604;&#1577;">Support a case</span><span class="arr" data-icon="arrowup" data-size="14"></span></a>
+            <a class="btn btn--glass btn--lg" href="give-item.html" data-en="Donate an item" data-ar="&#1578;&#1576;&#1585;&#1617;&#1593; &#1576;&#1602;&#1591;&#1593;&#1577;">Donate an item</a>
+          </div>
+        </div>
+
+        <form class="glass widget" id="quickgive" onsubmit="event.preventDefault()">
+          <div class="row-between"><span class="h3">Make a change today</span><span class="chip chip--good"><span class="chip__dot"></span>Verified</span></div>
+          <div class="seg" role="group" aria-label="Frequency">
+            <button type="button" aria-pressed="true" data-freq="once">Give once</button>
+            <button type="button" aria-pressed="false" data-freq="monthly">Give monthly</button>
+          </div>
+          <div class="widget__case"><img src="img/classroom.webp" alt="">
+            <div class="stack" style="gap:2px;min-width:0"><strong class="sm">Two terms to keep a Grade 9 student enrolled</strong>
+              <span class="xs mute-3"><span class="num">EDU-024</span> &middot; AED 5,500 to go</span></div></div>
+          <div class="amountgrid" id="qamounts"></div>
+          <div class="impactline"><span class="muted">Your impact</span><strong id="qimpact">Covers 1 week of tuition</strong></div>
+          <div class="paybtns">
+            <button class="applepay" type="button"><span data-icon="apple" data-size="17"></span>Pay</button>
+            <a class="btn btn--primary" href="case.html" id="qgo">Donate AED 500</a>
+          </div>
+          <span class="xs mute-3 center">Paid to the school's verified account against its invoice</span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="band--tight" style="padding-block:20px 0">
+    <div class="shell trust">
+      <div class="trust__i"><span class="iconbox" data-icon="badge"></span><div class="stack" style="gap:2px"><strong class="sm">Committee-verified</strong><span class="xs muted">Every case checked against evidence</span></div></div>
+      <div class="trust__i"><span class="iconbox" data-icon="school"></span><div class="stack" style="gap:2px"><strong class="sm">Paid to schools only</strong><span class="xs muted">Never to a family account</span></div></div>
+      <div class="trust__i"><span class="iconbox" data-icon="lock"></span><div class="stack" style="gap:2px"><strong class="sm">Identities protected</strong><span class="xs muted">No names, faces or classes</span></div></div>
+      <div class="trust__i"><span class="iconbox" data-icon="refresh"></span><div class="stack" style="gap:2px"><strong class="sm">Reconciled monthly</strong><span class="xs muted">Every dirham traced to a school</span></div></div>
+    </div>
+  </section>
+
+  <!-- ============ BENTO ============ -->
+  <section class="band">
+    <div class="shell stack stack-7">
+      <div class="section-head">
+        <h2 class="display h1" style="max-width:15ch">Small acts. <span class="mute-3 thin">Lasting growth.</span></h2>
+        <p class="lede">Give money to a case you choose, give monthly to the fund, or give an object you no longer need. All of it ends up in the same place.</p>
+      </div>
+      <div class="bento">
+        <a class="tile b-a" href="cases.html">
+          <img src="img/classroom.webp" alt="Students in a bright UAE classroom, seen from behind" loading="lazy">
+          <span class="roundarrow" data-icon="arrowup" data-size="18"></span>
+          <div class="tile__in">
+            <span class="chip chip--glass" style="align-self:start">Fund a case</span>
+            <span class="display h2" style="max-width:16ch">Choose a verified case and follow it to the school.</span>
+            <span class="sm" style="opacity:.85;max-width:44ch">Six cases are open right now, from bus fees to final-year tuition.</span>
+          </div>
+        </a>
+        <div class="tile tile--grad b-b">
+          <div class="tile__in" style="justify-content:space-between;block-size:100%">
+            <span class="iconbox" style="background:rgba(255,255,255,.18);color:#fff" data-icon="school"></span>
+            <div class="stack stack-2">
+              <span class="mega-num" style="font-size:clamp(2.4rem,1.6rem + 2.4vw,3.4rem)">AED <span data-count="3184500"></span></span>
+              <span class="sm" style="opacity:.9">paid directly to 61 schools and exam boards</span>
+            </div>
+          </div>
+        </div>
+        <a class="tile b-c" href="give-item.html">
+          <img src="img/bag.webp" alt="A tan leather tote on a white plinth" loading="lazy" style="object-position:50% 30%">
+          <span class="roundarrow" data-icon="arrowup" data-size="18"></span>
+          <div class="tile__in">
+            <span class="chip chip--gold" style="align-self:start">Donate an item</span>
+            <span class="h3" style="font-size:1.45rem">Your bag, watch or jewellery can pay a term&rsquo;s fees.</span>
+            <span class="sm" style="opacity:.85">Collected, authenticated and auctioned for you.</span>
+          </div>
+        </a>
+        <a class="tile b-d" href="case.html#fund">
+          <img src="img/supplies.webp" alt="School uniform, notebooks and a tablet laid out on a blue background" loading="lazy" style="object-position:50% 40%">
+          <span class="roundarrow" data-icon="arrowup" data-size="18"></span>
+          <div class="tile__in">
+            <span class="chip chip--glass" style="align-self:start">Give monthly</span>
+            <span class="h3">The Education Fund, from AED 100 a month</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASES ============ -->
+  <section class="band band--paper">
+    <div class="shell stack stack-7">
+      <div class="section-head">
+        <div class="stack stack-4">
+          <span class="chip chip--brand" style="align-self:start"><span class="chip__dot"></span>Open now</span>
+          <h2 class="display h1">Cases closing soon</h2>
+        </div>
+        <div class="row" role="group" aria-label="Filter cases" id="hfilter"></div>
+      </div>
+      <div class="grid g-3" id="caselist"></div>
+      <div class="row" style="justify-content:center"><a class="btn btn--dark btn--lg" href="cases.html">See all cases<span class="arr" data-icon="arrowup" data-size="14"></span></a></div>
+    </div>
+  </section>
+
+  <!-- ============ LOOP ============ -->
+  <section class="band band--ink">
+    <div class="glowbg glowbg--a" style="inset-block-start:-180px;inset-inline-start:-120px"></div>
+    <div class="glowbg glowbg--b" style="inset-block-end:-200px;inset-inline-end:-100px;opacity:.35"></div>
+    <div class="shell stack stack-7 z1">
+      <div class="section-head">
+        <h2 class="display h1" style="color:#fff;max-width:16ch">Two circuits. One destination.</h2>
+        <p class="lede">The two loops in the numoo mark are the two ways money arrives. Cash flows through one. Donated objects become cash through the other. Both close at the school.</p>
+      </div>
+      <div id="loop"></div>
+      <div class="grid g-3">
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="heart"></span><span class="h3" style="color:#fff">Give money</span><p class="sm muted">To a case you choose, or monthly to the Education Fund.</p></div>
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="shield"></span><span class="h3" style="color:#fff">The charity verifies</span><p class="sm muted">Income, invoice and school checked before anything is published.</p></div>
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="gavel"></span><span class="h3" style="color:#fff">Or give an object</span><p class="sm muted">Assessed by a specialist, sold at auction, proceeds to the fund.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUCTION ============ -->
+  <section class="band">
+    <div class="shell stack stack-7">
+      <div class="section-head">
+        <div class="stack stack-4">
+          <span class="chip chip--gold" style="align-self:start"><span class="chip__dot"></span>Live auction &middot; November sale</span>
+          <h2 class="display h1" style="max-width:17ch">Bid on something meaningful.</h2>
+        </div>
+        <a class="btn btn--line" href="auctions.html">All lots<span class="arr" data-icon="arrowup" data-size="14"></span></a>
+      </div>
+      <div class="grid g-4" id="lotlist"></div>
+      <div class="split split--center panel" style="padding:clamp(20px,2.5vw,32px);background:var(--gold-wash);border-color:transparent">
+        <div class="stack stack-4">
+          <h3 class="display h2">Have something worth more to someone else?</h3>
+          <p class="body">Tell us about it in two minutes. If it qualifies, we collect it from your door, have it authenticated and list it with its faults described. You see exactly what it raised.</p>
+          <div class="row"><a class="btn btn--gold btn--lg" href="give-item.html">Offer an item<span class="arr" data-icon="arrowup" data-size="14"></span></a>
+            <span class="sm muted">Items valued from AED 1,000</span></div>
+        </div>
+        <div class="photo" style="aspect-ratio:3/2"><img src="img/courier.webp" alt="A wrapped parcel handed over at a front door" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROOF ============ -->
+  <section class="band band--paper" style="padding-block:clamp(40px,5vw,72px)">
+    <div class="shell">
+      <div class="proof2" id="proof2">
+        <div class="mcol"><div class="mtrack" id="mc1"></div></div>
+        <div class="mcol"><div class="mtrack mtrack--down" id="mc2"></div></div>
+        <div class="proof2__mid">
+          <span class="chip chip--brand"><span class="chip__dot"></span>Since the pilot opened</span>
+          <span class="h3 muted" style="font-weight:500">Donors have kept</span>
+          <span class="mega-num grad-text" data-count="412"></span>
+          <span class="h3" style="font-weight:500">children in the classroom</span>
+          <p class="sm muted" style="max-width:30ch">Their schools have confirmed 389 stayed enrolled through the funded term.</p>
+          <a class="btn btn--primary btn--lg" href="impact.html">See the impact report<span class="arr" data-icon="arrowup" data-size="14"></span></a>
+        </div>
+        <div class="mcol"><div class="mtrack mtrack--down" id="mc3"></div></div>
+        <div class="mcol"><div class="mtrack" id="mc4"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MONEY TRAIL ============ -->
+  <section class="band">
+    <div class="shell split split--center">
+      <div class="stack stack-6">
+        <div class="stack stack-4">
+          <span class="chip chip--brand" style="align-self:start">Full transparency</span>
+          <h2 class="display h1" style="max-width:14ch">Follow your dirham to the school.</h2>
+          <p class="body">Every contribution gets a trail: received, approved by two people, paid to the school, matched to the bank statement, confirmed by the school at term end.</p>
+        </div>
+        <div class="card card--raised"><div class="row-between" style="margin-block-end:6px"><span class="chip chip--good">Closed and reconciled</span><span class="num xs mute-3">EDU-033</span></div>
+          <div class="trail" id="trail"></div></div>
+      </div>
+      <div class="split-photo">
+        <img src="img/docs.webp" alt="A case officer reviewing school invoices at a desk" loading="lazy">
+        <div class="glass floatcard stack stack-3">
+          <div class="row" style="gap:10px;flex-wrap:nowrap"><span class="iconbox iconbox--good" data-icon="users" style="inline-size:42px;block-size:42px;border-radius:12px"></span>
+            <div class="stack" style="gap:0"><strong class="sm">Two-person approval</strong><span class="xs mute-3">Nobody can prepare and release the same payment</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAMILIES ============ -->
+  <section class="band band--paper">
+    <div class="shell split split--center">
+      <div class="split-photo" style="min-block-size:520px">
+        <img src="img/father.webp" alt="A father and son walking through a school gate, seen from behind" loading="lazy">
+        <div class="glass floatcard stack stack-2">
+          <span class="xs mute-3">Average time from approval to school payment</span>
+          <span class="amount amount--xl">9 days</span>
+        </div>
+      </div>
+      <div class="stack stack-6">
+        <div class="stack stack-4">
+          <span class="chip chip--cyan" style="align-self:start">For families</span>
+          <h2 class="display h1" style="max-width:13ch">Asking for help, with dignity.</h2>
+          <p class="body">Applications go to the charity&rsquo;s case officers, never to the public. If a case is published, it carries a reference number &mdash; not a name, a face or a classroom.</p>
+        </div>
+        <ul class="check-list">
+          <li><span>Four quick questions tell you if you are eligible.</span></li>
+          <li><span>Save your application and return any time.</span></li>
+          <li><span>Many cases are funded privately, with no public page at all.</span></li>
+          <li><span>A decline always comes with a reason and a right to appeal.</span></li>
+        </ul>
+        <div class="row"><a class="btn btn--primary btn--lg" href="apply.html">Apply for support<span class="arr" data-icon="arrowup" data-size="14"></span></a>
+          <a class="btn btn--line btn--lg" href="how-it-works.html">How it works</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORPORATE ============ -->
+  <section class="band">
+    <div class="shell">
+      <div class="corp">
+        <div class="corp__copy">
+          <span class="chip chip--glass" style="align-self:start">For companies</span>
+          <h2 class="display h1" style="max-width:14ch">CSR with a settlement record attached.</h2>
+          <p style="opacity:.9;max-width:46ch">Sponsor a cohort, restrict funds to an emirate, match your employees&rsquo; giving or run an office item drive. Pledged, received, paid and confirmed are always four separate numbers.</p>
+          <div class="row"><a class="btn btn--white btn--lg" href="corporate.html">Corporate giving<span class="arr" data-icon="arrowup" data-size="14"></span></a></div>
+        </div>
+        <div class="corp__ph"><img src="img/corporate.webp" alt="An office team packing donated items into boxes" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="band band--tight" style="padding-block-start:0">
+    <div class="shell split">
+      <div class="faqside">
+        <h2 class="display h1">Questions people ask.</h2>
+        <p class="body">If yours isn&rsquo;t here, the charity&rsquo;s team is happy to help.</p>
+        <div class="contactcard">
+          <img src="img/volunteer.webp" alt="A charity team member at a reception desk" loading="lazy">
+          <div class="contactcard__in">
+            <span class="chip chip--glass" style="align-self:start"><span class="chip__dot" style="color:var(--good)"></span>Replies within one working day</span>
+            <strong class="h3" style="color:#fff;font-size:1.5rem">Talk to the charity&rsquo;s team</strong>
+            <div class="contactrow"><span>hello@[charity-domain].ae</span><span>Sun&ndash;Thu, 8am&ndash;5pm</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="faq">
+        <details open><summary>Does any money go to the family directly?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>No. Every payment goes to the school or examination board, against an invoice the charity has verified, to a bank account it confirmed independently.</p></details>
+        <details><summary>How do I know a case is real?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Income, tenancy, guardianship and the school invoice are checked by two case officers, the school confirms the balance directly, and a committee records its decision before anything is published.</p></details>
+        <details><summary>What happens if a case doesn&rsquo;t reach its target?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>It goes back to the committee, which can top it up from the Education Fund, agree a smaller scope with the school, or refund donors. You are told which.</p></details>
+        <details><summary>Can I donate in honour or memory of someone?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Yes. Add their name at checkout and it appears on your receipt. You can also give anonymously.</p></details>
+        <details><summary>Is my donation Zakat eligible?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Not in the first release. Zakat needs its own segregated fund and governance, and the charity will open that route separately.</p></details>
+        <details><summary>Can I set up a monthly donation?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Yes, to the Education Fund or to cases you choose. Pause, change or stop it any time from My numoo.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+
+  /* quick-give widget */
+  var amt = 500, freq = "once";
+  var impact = { 250: "Covers 3 days of tuition", 500: "Covers 1 week of tuition", 1000: "Covers 2 weeks of tuition", 2500: "Covers a month of tuition" };
+  function drawQ() {
+    document.getElementById("qamounts").innerHTML = [250, 500, 1000, 2500].map(function (v) {
+      return '<button class="amountbtn" type="button" data-v="' + v + '" aria-pressed="' + (v === amt) + '">' + N.plain(v) + '</button>';
+    }).join("");
+    N.qsa("#qamounts button").forEach(function (b) { b.addEventListener("click", function () { amt = +b.dataset.v; drawQ(); }); });
+    document.getElementById("qimpact").textContent = impact[amt] + (freq === "monthly" ? ", every month" : "");
+    document.getElementById("qgo").textContent = "Donate " + N.money(amt) + (freq === "monthly" ? "/mo" : "");
+  }
+  N.qsa("[data-freq]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      freq = b.dataset.freq; N.qsa("[data-freq]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); drawQ();
+    });
+  });
+  drawQ();
+
+  /* cases with filter */
+  var open = N.CASES.filter(function (c) { return !c.done; }).sort(function (a, b) { return a.days - b.days; });
+  var f = "All", filters = ["All", "Tuition", "Transport", "Books"];
+  function drawCases() {
+    document.getElementById("hfilter").innerHTML = filters.map(function (v) {
+      return '<button class="filterchip" type="button" data-v="' + v + '" aria-pressed="' + (v === f) + '">' + v + '</button>';
+    }).join("");
+    N.qsa("#hfilter button").forEach(function (b) { b.addEventListener("click", function () { f = b.dataset.v; drawCases(); }); });
+    var rows = open.filter(function (c) { return f === "All" || c.type.toLowerCase().indexOf(f.toLowerCase()) > -1; }).slice(0, 3);
+    document.getElementById("caselist").innerHTML = rows.map(N.caseCard).join("");
+    N.refresh();
+  }
+  drawCases();
+
+
+  /* moving case columns */
+  var extra = [
+    {title:"Term 3 fees for a Grade 6 student", photo:"img/school.webp", raised:3100, need:7600, pos:"30% 50%"},
+    {title:"Exam entry for a Grade 10 student", photo:"img/hero.webp", raised:2900, need:4200, pos:"60% 50%"},
+    {title:"Bus fees for two siblings in Ajman", photo:"img/bus.webp", raised:1200, need:4400, pos:"75% 50%"},
+    {title:"Uniform and books for Grade 1", photo:"img/supplies.webp", raised:950, need:2100, pos:"50% 80%"},
+    {title:"Final term for a Grade 12 student", photo:"img/walk.webp", raised:9800, need:11500, pos:"50% 70%"},
+    {title:"Device deposit for a Grade 8 class", photo:"img/classroom.webp", raised:600, need:1800, pos:"80% 50%"}
+  ];
+  var pool = N.CASES.map(function (c) { return {title:c.title, photo:c.photo, raised:c.raised, need:c.need, pos:"50% 50%"}; }).concat(extra);
+  function mcard(c) {
+    var p = Math.round(c.raised / c.need * 100);
+    return '<a class="mcard" href="case.html" tabindex="-1"><img src="' + c.photo + '" alt="" loading="lazy" style="object-position:' + c.pos + '">' +
+      '<span class="mcard__label"><span class="mcard__t">' + c.title + N.icon("arrowup", 14, 2.4) + '</span>' +
+      '<span class="mcard__bar"><i style="width:' + Math.min(100, p) + '%"></i></span>' +
+      '<span class="mcard__m"><span>' + N.money(c.raised) + '</span><span>' + (p >= 100 ? "Funded" : p + "%") + '</span></span></span></a>';
+  }
+  [[0,4,8],[1,5,9],[2,6,10],[3,7,11]].forEach(function (ix, k) {
+    var html = ix.map(function (i) { return mcard(pool[i % pool.length]); }).join("");
+    document.getElementById("mc" + (k + 1)).innerHTML = html + html;
+  });
+  N.qsa("#proof2 .mtrack").forEach(function (t, k) { if (k % 2) t.setAttribute("aria-hidden", "true"); });
+  document.getElementById("loop").innerHTML = N.loopDiagram();
+  document.getElementById("lotlist").innerHTML = N.LOTS.slice(0, 4).map(N.lotCard).join("");
+  document.getElementById("trail").innerHTML = N.trailHTML([
+    ["Campaign funded", "28 Oct, 19:04", "AED 6,500 from 24 donors", "done"],
+    ["Two-person approval", "29 Oct, 11:20", "Prepared by one officer, released by another", "done"],
+    ["Exam board paid", "30 Oct, 09:48", "Ref PAY-5518, to a verified account", "done"],
+    ["Entry confirmed", "02 Nov, 08:30", "Six subjects entered for May", "done"]
+  ]);
+};
+</script>
+<script src="assets/numoo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How numoo works</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype for review. Timings and rules shown here are proposals, not commitments.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="phero ">
+        <img src="img/school.webp" alt="">
+        <div class="phero__in">
+          <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>How it works</span></nav>
+          <h1 class="display h-hero">Two circuits. One point of release.</h1>
+          <p class="lede">Money and objects travel different routes and meet at the same control: a verified school invoice, approved by two people, paid to an account the charity checked itself.</p>
+          <div class="row"><a class="btn btn--primary btn--lg" href="#roles">Find your part<span class="arr" data-icon="arrowup" data-size="14"></span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink" style="margin-block-start:40px">
+    <div class="glowbg glowbg--a" style="inset-block-start:-180px;inset-inline-start:-120px"></div>
+    <div class="glowbg glowbg--b" style="inset-block-end:-200px;inset-inline-end:-100px;opacity:.35"></div>
+    <div class="shell stack stack-6 z1">
+      <div class="section-head"><h2 class="display h1" style="color:#fff;max-width:15ch">The numoo loop</h2>
+        <p class="lede">Cash runs through one loop, donated objects through the other. They cross at the only place money is ever released.</p></div>
+      <div id="loop"></div>
+    </div>
+  </section>
+
+  <section id="roles" class="band band--tight">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">Pick the part that is yours</h2>
+      <div class="tabs" data-tabs="roles" role="tablist">
+        <button role="tab" aria-selected="true" data-target="family">A family</button>
+        <button role="tab" aria-selected="false" data-target="donor">A donor</button>
+        <button role="tab" aria-selected="false" data-target="item">An item donor</button>
+        <button role="tab" aria-selected="false" data-target="bidder">A bidder</button>
+        <button role="tab" aria-selected="false" data-target="school">A school</button>
+        <button role="tab" aria-selected="false" data-target="company">A company</button>
+      </div>
+
+      <div data-panel="family" data-group="roles">
+        <div class="grid g-3" id="p-family"></div>
+      </div>
+      <div data-panel="donor" data-group="roles" hidden><div class="grid g-3" id="p-donor"></div></div>
+      <div data-panel="item" data-group="roles" hidden><div class="grid g-3" id="p-item"></div></div>
+      <div data-panel="bidder" data-group="roles" hidden><div class="grid g-3" id="p-bidder"></div></div>
+      <div data-panel="school" data-group="roles" hidden><div class="grid g-3" id="p-school"></div></div>
+      <div data-panel="company" data-group="roles" hidden><div class="grid g-3" id="p-company"></div></div>
+    </div>
+  </section>
+
+  <section class="band band--tight band--surface" style="border-block:1px solid var(--line)">
+    <div class="shell stack stack-6">
+      <div class="split" style="align-items:end">
+        <h2 class="display h2">A case has one lifecycle, and the words are not interchangeable</h2>
+        <p class="body sm">Most disputes about charitable platforms come from conflating these. A campaign reaching its target is not a payment. A payment is not an outcome.</p>
+      </div>
+      <div class="tablewrap"><table class="t"><caption class="sr">Case states and what each one means</caption>
+        <thead><tr><th>State</th><th>What is true</th><th>What is not yet true</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip">Submitted</span></td><td>A family has sent an application and evidence.</td><td>Nothing has been checked.</td></tr>
+          <tr><td><span class="chip">Verified</span></td><td>Income, invoice, school and payment destination confirmed.</td><td>No decision has been taken.</td></tr>
+          <tr><td><span class="chip chip--brand">Approved</span></td><td>The committee recorded a decision and a rationale.</td><td>No money is reserved.</td></tr>
+          <tr><td><span class="chip chip--brand">Campaign live</span></td><td>An anonymised case is public and accepting donations.</td><td>Nothing has been paid.</td></tr>
+          <tr><td><span class="chip chip--good">Funding complete</span></td><td>The target has been reached and collection has paused.</td><td>The school has not been paid.</td></tr>
+          <tr><td><span class="chip chip--good">Paid</span></td><td>Two approvers released funds to the school's verified account.</td><td>The bank has not been reconciled.</td></tr>
+          <tr><td><span class="chip chip--good">Reconciled</span></td><td>The payment is matched to a statement line and journalled.</td><td>No educational outcome is confirmed.</td></tr>
+          <tr><td><span class="chip chip--good">Confirmed</span></td><td>The school confirmed enrolment and attendance continued.</td><td>Grades are never collected or published.</td></tr>
+        </tbody></table></div>
+      <p class="xs mute-3">Separate flags cover paused, withdrawn, expired, under appeal and suspected fraud. These are states, not stages, and a case can carry one without leaving its place in the lifecycle.</p>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell grid g-2">
+      <div class="stack stack-4">
+        <h2 class="display h2">What the charity does</h2>
+        <ul class="stack stack-3 sm muted">
+          <li>Holds the fundraising permissions and the donor relationship.</li>
+          <li>Appoints the committee and sets eligibility policy.</li>
+          <li>Takes custody of donated items and contracts the specialists.</li>
+          <li>Owns the payment accounts and the statutory reporting.</li>
+          <li>Decides every case. No decision is automated.</li>
+        </ul>
+      </div>
+      <div class="stack stack-4">
+        <h2 class="display h2">What the technology provider does</h2>
+        <ul class="stack stack-3 sm muted">
+          <li>Builds and runs the platform, and keeps it available and secure.</li>
+          <li>Integrates the services the charity has approved.</li>
+          <li>Works under charity-approved data-processing terms.</li>
+          <li>Holds no payment account and touches no charitable funds.</li>
+          <li>Has support access that is limited, time-boxed and logged.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink band--tight">
+    <div class="shell row-between">
+      <div class="stack stack-3" style="max-width:54ch">
+        <h2 class="display h2" style="color:#fff">Still deciding whether to apply?</h2>
+        <p class="sm" style="color:#A9C8DD">The eligibility check takes four questions and needs no documents.</p>
+      </div>
+      <div class="row">
+        <a class="btn btn--primary btn--lg" href="apply.html">Check eligibility</a>
+        <a class="btn btn--line btn--lg" href="trust.html">How money is handled</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+  document.getElementById("loop").innerHTML = N.loopDiagram();
+
+  var flows = {
+    family: [
+      ["Check, then apply", "Four questions tell you whether this route fits. The application itself saves as a draft, so you can gather documents over several days."],
+      ["A case officer takes it", "One named person handles your file. You message them in the platform rather than explaining your situation again to whoever answers."],
+      ["The school is asked, not you", "Enrolment, the amount owed and the payment destination are confirmed with the school directly. Any discount is negotiated by the charity."],
+      ["The committee decides", "On evidence, with a written rationale, a declared quorum and recorded recusals. Urgency can shorten the route but never removes verification."],
+      ["Funded two ways", "Either allocated from the Education Fund with no public page at all, or published as an anonymised campaign if you consent to that."],
+      ["Paid and followed up", "Money goes to the school. At the end of the term the school confirms the child is still enrolled. Grades are never requested."]
+    ],
+    donor: [
+      ["Choose a case or the fund", "A case gives you a specific outcome to follow. The fund lets the committee direct money to whatever is closest to a deadline."],
+      ["Your money is reserved, not spent", "While payment is in progress, that part of the target is held so two people cannot fund the same gap twice."],
+      ["Restrictions are enforced", "A donation to one case cannot quietly move to another. If the case closes or is withdrawn, you are asked what you want done."],
+      ["Two people release it", "One prepares the payment, a different person authorises it. Nobody can do both, including an administrator."],
+      ["You see the settlement", "The receipt, the school payment reference and the reconciliation date all appear against your contribution."],
+      ["One follow-up, no stories", "A continuity confirmation at the end of the term. No photographs of children, no grades, no case studies written to move you."]
+    ],
+    item: [
+      ["Offer it in three minutes", "Photographs, a description including the faults, your own estimate, and a declaration that you own it outright."],
+      ["Pre-screen before anyone drives anywhere", "A case officer checks the category, the likely value and whether a specialist can assess it. Most declines happen here, within two working days."],
+      ["Handover is a record", "At collection you sign a custody receipt. Condition is photographed, an item ID is applied and the handler is recorded. Ownership transfers at this moment."],
+      ["Assessed, then catalogued", "An independent specialist documents method, conclusion and limits. Assessment is kept separate from the resale estimate and from the reserve."],
+      ["You agree the reserve", "Before the lot goes live you are told the reserve, the auction length and the costs that will be deducted."],
+      ["You are told what it raised", "Net proceeds, not gross. If the lot does not sell, the terms you agreed decide whether it is returned, relisted or offered elsewhere."]
+    ],
+    bidder: [
+      ["Register and be verified", "Bidding is open to adults with a verified contact. Proportionate identity checks apply above a threshold set by the charity."],
+      ["Read the report, then bid", "Condition, faults, the specialist's conclusion and the limits of that conclusion are all on the lot page before you can place a bid."],
+      ["Bids are recorded on server time", "Two bids at the same instant cannot both lead. The full bid history is immutable and available to auditors."],
+      ["Late bids extend the close", "A valid bid inside the final two minutes adds two minutes, so a lot cannot be won by timing alone."],
+      ["48 hours to pay", "A winning bid is a commitment. Nothing ships before cleared funds, and no charitable proceeds are recognised until payment settles."],
+      ["Delivery and disputes", "Delivery is charged separately and matched to its cost. Damage, non-delivery and authenticity disputes have a defined route, not a blanket no-refund rule."]
+    ],
+    school: [
+      ["Confirm, don't collect", "Schools confirm enrolment, the outstanding balance and the fee period. They do not see a family's hardship evidence."],
+      ["Negotiate the gap down", "The charity asks for a goodwill discount before publishing a target. A smaller target closes faster, so this is in everyone's interest."],
+      ["Invoice the charity", "Payment is made against the school invoice to an account the charity verified independently of that invoice."],
+      ["One portal for several campuses", "School groups manage campuses under one account with separate finance contacts."],
+      ["Confirm continuity at term end", "A single confirmation that the student is enrolled and attending. No grades, no reports, no student records."],
+      ["Refer a case", "A school can refer a family, but guardian authority and consent are verified separately before anything proceeds."]
+    ],
+    company: [
+      ["Pledge, then pay", "Pledged and received are reported as separate figures. A commitment is never counted as cash."],
+      ["Restrict it meaningfully", "Fund a grade band, an emirate or a cohort. Restrictions are enforced when funds are allocated, not left to good intentions."],
+      ["Match what staff give", "Employee giving can be matched up to a cap, with the match tracked against the same restrictions."],
+      ["Run an item drive", "Collect items at your offices. The charity handles collection, assessment and sale, and reports proceeds back by drive."],
+      ["Report with evidence", "Contributions, allocations, disbursements and verified outcomes are shown as four different numbers, not one."],
+      ["Keep the branding honest", "An impact page can carry your name. It cannot claim outcomes the charity has not confirmed."]
+    ]
+  };
+
+  Object.keys(flows).forEach(function (k) {
+    document.getElementById("p-" + k).innerHTML = flows[k].map(function (s, i) {
+      return '<div class="card stack stack-3"><span class="steps__n" style="inline-size:28px;block-size:28px">' + (i + 1) + '</span>' +
+        '<span class="h3">' + s[0] + '</span><p class="sm muted">' + s[1] + '</p></div>';
+    }).join("");
+  });
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

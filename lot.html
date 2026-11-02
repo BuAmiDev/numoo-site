@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lot A-018 &middot; numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell" style="justify-content:space-between;flex-wrap:wrap">
+  <span class="row" style="gap:8px"><span class="inf"></span><span>Concept prototype. No bid is binding.</span></span>
+  <span class="row" style="gap:6px"><span class="mute-3">Preview bidder state</span>
+    <button class="filterchip btn--sm" type="button" data-view="live" aria-pressed="true">Live</button>
+    <button class="filterchip btn--sm" type="button" data-view="outbid" aria-pressed="false">Outbid</button>
+    <button class="filterchip btn--sm" type="button" data-view="won" aria-pressed="false">Won</button>
+  </span>
+</div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section class="band band--tight band--surface">
+    <div class="shell stack stack-5">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="auctions.html">Auctions</a><span>/</span><span class="num">A-018</span></nav>
+      <div class="split">
+        <div class="stack stack-4">
+          <div class="card card--pad0 lotfig" style="aspect-ratio:4/3;border-radius:var(--r-xl)" id="art"></div>
+          <div class="scrollx" id="thumbs"></div>
+          <p class="xs mute-3">Catalogue photography. Every disclosed fault is photographed and shown in the lot report.</p>
+        </div>
+        <div class="stack stack-5" id="bidcol"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell split">
+      <div class="stack stack-7">
+        <div class="stack stack-4">
+          <h2 class="display h2">Condition</h2>
+          <p class="body" id="note"></p>
+          <div class="tablewrap"><table class="t"><caption class="sr">Condition detail</caption><tbody>
+            <tr><td>Overall grade</td><td>Very good</td></tr>
+            <tr><td>Disclosed faults</td><td>Corner wear on two base corners. Light interior marking.</td></tr>
+            <tr><td>Accessories included</td><td>Dust bag. No authenticity card supplied.</td></tr>
+            <tr><td>Restoration</td><td>None found at inspection.</td></tr>
+          </tbody></table></div>
+        </div>
+
+        <div class="stack stack-4">
+          <h2 class="display h2">Specialist assessment</h2>
+          <div class="card stack stack-4" id="auth"></div>
+          <p class="xs mute-3">Assessment is kept separate from resale valuation and from the committee's decision to accept the item. A specialist opinion is not a guarantee of title or of market value.</p>
+        </div>
+
+        <div class="stack stack-4">
+          <h2 class="display h2">Where the money goes</h2>
+          <div class="tablewrap"><table class="t"><caption class="sr">Illustrative proceeds for this lot</caption>
+            <thead><tr><th>Line</th><th style="text-align:end">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>Winning bid, at the current level</td><td class="n" style="text-align:end">AED 2,200</td></tr>
+              <tr><td>Delivery charged to the buyer</td><td class="n" style="text-align:end">AED 50</td></tr>
+              <tr><td><strong>Buyer pays</strong></td><td class="n" style="text-align:end"><strong>AED 2,250</strong></td></tr>
+              <tr><td class="muted">Courier cost, matched to the charge</td><td class="n muted" style="text-align:end">&minus; AED 50</td></tr>
+              <tr><td class="muted">Collection, assessment, photography, processing</td><td class="n muted" style="text-align:end">&minus; AED 200</td></tr>
+              <tr><td><strong>Net to the Education Fund</strong></td><td class="n" style="text-align:end;color:var(--good)"><strong>AED 2,000</strong></td></tr>
+            </tbody></table></div>
+          <p class="xs mute-3">Planning assumptions, not supplier quotes. Every lot report states whether costs were deducted from proceeds or met by a sponsor.</p>
+        </div>
+
+        <div class="stack stack-4">
+          <h2 class="display h2">Bid history</h2>
+          <div class="tablewrap"><table class="t"><caption class="sr">Bid history for lot A-018</caption>
+            <thead><tr><th>Bidder</th><th>Amount</th><th>Server time</th></tr></thead>
+            <tbody id="hist"></tbody></table></div>
+          <p class="xs mute-3">Bidders are shown by reference. The full identity record is held by the charity and is available to auditors.</p>
+        </div>
+      </div>
+
+      <div class="stack stack-4">
+        <div class="sticky-col stack stack-4">
+          <div class="card stack stack-4">
+            <span class="h3">Lot terms</span>
+            <dl class="dl">
+              <dt>Reserve</dt><dd class="num">AED 1,800, met</dd>
+              <dt>Increment</dt><dd class="num">AED 100</dd>
+              <dt>Closes</dt><dd class="num countdown" data-ends="" id="cd2"></dd>
+              <dt>Extension</dt><dd>+2 min on a late bid</dd>
+              <dt>Payment due</dt><dd>48 hours from close</dd>
+              <dt>Collection</dt><dd>Courier or charity office</dd>
+            </dl>
+          </div>
+          <div class="card stack stack-3">
+            <span class="label">Item donor</span>
+            <p class="sm muted">Given by a private donor in Dubai who asked not to be named. The donor nominated the Education Fund rather than a specific case.</p>
+            <a class="link sm" href="give-item.html">Offer an item of your own</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO, l = N.lotById("A-018"), view = "live", bid = l.bid, mine = 0;
+
+  document.getElementById("art").innerHTML = N.artwork(l.cat, l.id);
+  document.getElementById("thumbs").innerHTML = [["Full view", "1", "50% 50%"], ["Handles", "2.4", "50% 10%"], ["Base corner", "2.6", "22% 72%"], ["Stitching", "3", "70% 45%"]].map(function (t) {
+    return '<div class="card card--pad0" style="inline-size:120px;flex:0 0 120px;border-radius:16px"><div style="aspect-ratio:1;overflow:hidden">' +
+      '<img src="img/' + l.cat + '.webp" alt="' + t[0] + '" style="inline-size:100%;block-size:100%;object-fit:cover;transform:scale(' + t[1] + ');transform-origin:' + t[2] + '"></div>' +
+      '<span class="xs mute-3" style="display:block;padding:7px 10px">' + t[0] + '</span></div>';
+  }).join("");
+  document.getElementById("note").textContent = l.note;
+  document.getElementById("auth").innerHTML =
+    '<dl class="dl" style="grid-template-columns:auto 1fr">' +
+    '<dt>Assessed by</dt><dd>' + l.auth.by + '</dd>' +
+    '<dt>Date</dt><dd class="num">' + l.auth.date + '</dd>' +
+    '<dt>Method</dt><dd>' + l.auth.method + '</dd>' +
+    '<dt>Conclusion</dt><dd>' + l.auth.result + '</dd></dl>' +
+    '<div class="notice notice--warn"><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>' +
+    '<div class="stack stack-2"><strong class="sm">Stated limits of this assessment</strong><span class="sm">' + l.auth.limits + '</span></div></div>';
+
+  var history = [
+    ["Bidder 7742", 2200, "01 Nov 2026, 21:14"],
+    ["Bidder 3190", 2100, "01 Nov 2026, 20:52"],
+    ["Bidder 7742", 1900, "31 Oct 2026, 18:03"],
+    ["Bidder 5521", 1800, "30 Oct 2026, 12:40"]
+  ];
+  document.getElementById("cd2").dataset.ends = l.ends;
+
+  function drawHist() {
+    document.getElementById("hist").innerHTML = history.map(function (h, i) {
+      return '<tr><td>' + (h[0] === "You" ? '<strong>You</strong>' : h[0]) + (i === 0 ? ' <span class="chip chip--good">leading</span>' : '') +
+        '</td><td class="n">' + N.money(h[1]) + '</td><td class="n xs mute-3">' + h[2] + '</td></tr>';
+    }).join("");
+  }
+
+  function drawBid() {
+    var next = bid + 100, host = document.getElementById("bidcol"), body;
+    if (view === "won") {
+      body = '<div class="notice notice--good"><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>' +
+        '<div class="stack stack-2"><strong class="sm">You won this lot</strong><span class="xs">Payment is due within 48 hours of the close. The lot is held for you until then.</span></div></div>' +
+        '<dl class="dl"><dt>Winning bid</dt><dd class="amount">' + N.money(2200) + '</dd>' +
+        '<dt>Delivery</dt><dd class="amount">' + N.money(50) + '</dd>' +
+        '<dt>Total due</dt><dd class="amount amount--lg">' + N.money(2250) + '</dd>' +
+        '<dt>Pay before</dt><dd class="num">04 Nov 2026, 21:14</dd></dl>' +
+        '<a class="btn btn--primary btn--block btn--lg" href="my-numoo.html">Complete payment</a>' +
+        '<p class="xs mute-3">If payment is not settled, the lot is cancelled, account controls apply and the next bidder may be offered the lot on new terms. Nothing ships before cleared funds.</p>';
+    } else if (view === "outbid") {
+      body = '<div class="notice notice--warn"><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>' +
+        '<div class="stack stack-2"><strong class="sm">Another bidder has overtaken you</strong><span class="xs">Your last bid of AED 2,100 is no longer leading.</span></div></div>' +
+        bidForm(next) ;
+    } else {
+      body = (mine ? '<div class="notice notice--good"><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>' +
+        '<div class="stack stack-2"><strong class="sm">You are the highest bidder</strong><span class="xs">We will email you if you are outbid before the lot closes.</span></div></div>' : '') +
+        bidForm(next);
+    }
+    host.innerHTML =
+      '<div class="stack stack-3"><h1 class="display h1">' + l.title + '</h1>' +
+      '<span class="row sm mute-3" style="gap:10px"><span class="num">Lot ' + l.id + '</span><span>&middot;</span><span>' + l.condition + '</span>' +
+      '<span>&middot;</span><span>Estimate ' + N.money(l.est[0]) + '–' + N.money(l.est[1]) + '</span></span></div>' +
+      '<div class="card stack stack-4">' +
+      '<div class="row-between" style="align-items:end"><div class="stack stack-2">' +
+      '<span class="label">' + (view === "won" ? "Sold for" : "Current bid") + '</span>' +
+      '<span class="amount amount--xl">' + N.money(view === "won" ? 2200 : bid) + '</span>' +
+      '<span class="xs mute-3">' + history.length + ' bids · reserve met</span></div>' +
+      '<div class="stack stack-2" style="text-align:end"><span class="label">' + (view === "won" ? "Closed" : "Closes in") + '</span>' +
+      '<span class="countdown amount--lg" data-ends="' + (view === "won" ? Date.now() - 1000 : l.ends) + '"></span></div></div>' +
+      body + '</div>' +
+      '<p class="priv"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Proceeds go to ' + l.fund + ' after disclosed costs.</p>';
+    N.qs("#place") && N.qs("#place").addEventListener("click", function () {
+      var v = Number(N.qs("#bidamt").value);
+      if (!N.qs("#agree").checked) { N.qs("#agreeerr").hidden = false; return; }
+      if (v < bid + 100) { N.qs("#amterr").hidden = false; return; }
+      bid = v; mine = v; view = "live";
+      history.unshift(["You", v, "02 Nov 2026, 03:22"]);
+      drawHist(); drawBid();
+    });
+    N.refresh();
+  }
+
+  function bidForm(next) {
+    return '<div class="field"><label for="bidamt">Your bid</label>' +
+      '<input class="input num" id="bidamt" type="number" value="' + next + '" min="' + next + '" step="100" inputmode="numeric">' +
+      '<span class="hint">Minimum next bid is ' + N.money(next) + '. Bidding is in steps of AED 100.</span>' +
+      '<span class="hint" id="amterr" hidden style="color:var(--warn)">Enter at least ' + N.money(next) + '.</span></div>' +
+      '<label class="choice"><input type="checkbox" id="agree"><span class="xs">I have read the lot report and the auction terms. I understand a winning bid commits me to pay within 48 hours.</span></label>' +
+      '<span class="hint" id="agreeerr" hidden style="color:var(--warn)">Confirm you have read the lot report and terms before bidding.</span>' +
+      '<button class="btn btn--gold btn--block btn--lg" id="place" type="button">Place bid</button>' +
+      '<p class="xs mute-3 center">Demonstration only. Nothing is submitted and no account is charged.</p>';
+  }
+
+  N.qsa("button[data-view]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      view = b.dataset.view;
+      N.qsa("button[data-view]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      drawBid();
+    });
+  });
+
+  drawHist(); drawBid();
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

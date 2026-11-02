@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>My numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype. A signed-in account is simulated; no real records exist.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell stack stack-5">
+      <div class="phero" style="min-block-size:260px">
+        <img src="img/supplies.webp" alt="">
+        <div class="phero__in">
+          <span class="chip chip--glass" style="align-self:start">Signed in &middot; member since Mar 2026</span>
+          <h1 class="display h1">Welcome back, Layla</h1>
+          <p class="lede">Your giving, your items and your bids in one place.</p>
+        </div>
+      </div>
+      <div class="grid g-4" id="kpis"></div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-6">
+      <div class="tabs" data-tabs="acct" role="tablist">
+        <button role="tab" aria-selected="true" data-target="giving">Giving</button>
+        <button role="tab" aria-selected="false" data-target="items">Items you gave</button>
+        <button role="tab" aria-selected="false" data-target="bids">Bids and orders</button>
+        <button role="tab" aria-selected="false" data-target="app">Your application</button>
+        <button role="tab" aria-selected="false" data-target="notes">Notifications</button>
+      </div>
+
+      <div data-panel="giving" data-group="acct" class="stack stack-6">
+        <div class="split">
+          <div class="stack stack-4">
+            <h2 class="h3">Contributions</h2>
+            <div class="tablewrap"><table class="t"><caption class="sr">Your contributions</caption>
+              <thead><tr><th>Date</th><th>To</th><th style="text-align:end">Amount</th><th>Status</th></tr></thead>
+              <tbody id="gifts"></tbody></table></div>
+            <p class="xs mute-3">Held means the payment cleared and is reserved for that case. Disbursed means the school has been paid and the transfer reconciled.</p>
+          </div>
+          <div class="stack stack-4">
+            <div class="card stack stack-4">
+              <span class="h3">Monthly giving</span>
+              <div class="row-between"><span class="amount amount--lg">AED 250</span><span class="chip chip--good">Active</span></div>
+              <p class="xs muted">To the Education Fund, charged on the 1st. Next payment 1 Dec 2026.</p>
+              <div class="row" style="gap:8px"><button class="btn btn--line btn--sm" type="button">Change amount</button>
+                <button class="btn btn--line btn--sm" type="button">Pause</button></div>
+            </div>
+            <div class="card stack stack-3">
+              <span class="label">Giving statement</span>
+              <p class="sm muted">Your annual statement for 2026 is published in January. It lists every contribution, its allocation and its settlement reference.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="items" data-group="acct" hidden class="stack stack-5">
+        <h2 class="h3">Items you gave</h2>
+        <div class="grid g-3" id="items"></div>
+        <a class="btn btn--gold" href="give-item.html" style="align-self:start">Offer another item</a>
+      </div>
+
+      <div data-panel="bids" data-group="acct" hidden class="stack stack-6">
+        <div class="split">
+          <div class="stack stack-4">
+            <h2 class="h3">Active bids</h2>
+            <div class="grid g-2" id="bids"></div>
+            <h2 class="h3" style="margin-block-start:12px">Orders</h2>
+            <div class="card stack stack-4">
+              <div class="row-between"><div class="stack stack-2"><strong>Lot A-012, silk scarf</strong>
+                <span class="xs mute-3 num">Order ORD-012 &middot; won 18 Oct 2026</span></div>
+                <span class="chip chip--good">Delivered</span></div>
+              <div class="trail" id="ordertrail"></div>
+            </div>
+          </div>
+          <div class="card stack stack-3">
+            <span class="label">Payment due</span>
+            <p class="sm muted">Winning bids must be settled within 48 hours. Unpaid lots are cancelled and may be offered to the next bidder on fresh terms.</p>
+            <a class="link sm" href="auctions.html">Back to the auction</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="app" data-group="acct" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-4">
+            <h2 class="h3">Application APP-024</h2>
+            <p class="body sm">Only you and the case officers handling your file can see this. It is not linked to your donor profile in any public view.</p>
+            <div class="card"><div class="trail" id="apptrail"></div></div>
+          </div>
+          <div class="stack stack-4">
+            <div class="card stack stack-4">
+              <span class="h3">Your case officer</span>
+              <p class="sm muted">Noura K. replies within one working day. Messages stay inside the platform; no phone numbers are exchanged.</p>
+              <div class="field"><label for="msg" class="sr">Message</label>
+                <textarea class="textarea" id="msg" placeholder="Ask a question about your application"></textarea></div>
+              <button class="btn btn--primary btn--sm" type="button" style="align-self:start">Send message</button>
+            </div>
+            <div class="notice notice--warn">
+              <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+              <div class="stack stack-2"><strong class="sm">One document is still needed</strong>
+                <span class="xs">A tenancy contract or proof of address. The review is paused until it arrives.</span>
+                <button class="btn btn--line btn--sm" type="button" style="align-self:start">Upload document</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="notes" data-group="acct" hidden class="stack stack-5">
+        <h2 class="h3">Notifications</h2>
+        <div class="stack stack-3" id="notes"></div>
+        <div class="card stack stack-4" style="max-width:560px">
+          <span class="h3">What you hear about</span>
+          <label class="choice"><input type="checkbox" checked><span class="xs">Settlement of cases I funded, including the payment reference</span></label>
+          <label class="choice"><input type="checkbox" checked><span class="xs">Outbid and auction close alerts</span></label>
+          <label class="choice"><input type="checkbox" checked><span class="xs">Progress on items I donated</span></label>
+          <label class="choice"><input type="checkbox"><span class="xs">New cases in emirates I have supported before</span></label>
+          <p class="xs mute-3">Turning everything off does not stop statutory receipts or payment confirmations, which the charity must send.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+
+  document.getElementById("kpis").innerHTML = [
+    [N.money(7250), "given since March 2026"],
+    ["9", "cases supported"],
+    [N.money(2200), "raised by items you donated"],
+    ["2", "cases confirmed still enrolled"]
+  ].map(function (k) {
+    return '<div class="statcard"><span class="kpi__v grad-text">' + k[0] + '</span><span class="kpi__l">' + k[1] + '</span></div>';
+  }).join("");
+
+  var gifts = [
+    ["02 Nov 2026", "Case EDU-024", 500, "Held, not yet disbursed", "chip--brand"],
+    ["01 Nov 2026", "Education Fund", 250, "Allocated to EDU-035", "chip--brand"],
+    ["12 Oct 2026", "Case EDU-033", 1000, "Disbursed, ref PAY-5518", "chip--good"],
+    ["01 Oct 2026", "Education Fund", 250, "Allocated to EDU-031", "chip--good"],
+    ["14 Sep 2026", "Case EDU-019", 2000, "Disbursed, ref PAY-5102", "chip--good"],
+    ["01 Sep 2026", "Education Fund", 250, "Allocated to EDU-022", "chip--good"],
+    ["22 Aug 2026", "Case EDU-014", 3000, "Refunded, case withdrawn", "chip--warn"]
+  ];
+  document.getElementById("gifts").innerHTML = gifts.map(function (g) {
+    return '<tr><td class="n xs">' + g[0] + '</td><td>' + g[1] + '</td><td class="n" style="text-align:end">' +
+      N.money(g[2]) + '</td><td><span class="chip ' + g[4] + '">' + g[3] + '</span></td></tr>';
+  }).join("");
+
+  document.getElementById("items").innerHTML = [
+    ["ITM-018", "Leather handbag", "Live at auction", "chip--gold", "Lot A-018 · current bid AED 2,200"],
+    ["ITM-009", "Silver cufflinks", "Sold", "chip--good", "Raised AED 1,450 net for the Education Fund"],
+    ["ITM-004", "Wool overcoat", "Declined", "chip--warn", "Below the value threshold. Returned 12 Sep 2026"]
+  ].map(function (i) {
+    return '<div class="card stack stack-3"><div class="row-between"><span class="num xs mute-3">' + i[0] + '</span>' +
+      '<span class="chip ' + i[3] + '">' + i[2] + '</span></div>' +
+      '<span class="h3">' + i[1] + '</span><p class="sm muted">' + i[4] + '</p>' +
+      '<a class="link sm" href="give-item.html#track">Follow this item</a></div>';
+  }).join("");
+
+  document.getElementById("bids").innerHTML = [
+    ["A-018", "Leather handbag", 2200, true, "You are the highest bidder"],
+    ["A-021", "Men's automatic watch", 4650, false, "Outbid on 01 Nov, 19:40"]
+  ].map(function (b) {
+    return '<div class="card stack stack-3"><div class="row-between"><span class="num xs mute-3">Lot ' + b[0] + '</span>' +
+      '<span class="chip ' + (b[3] ? "chip--good" : "chip--warn") + '">' + (b[3] ? "Leading" : "Outbid") + '</span></div>' +
+      '<span class="h3">' + b[1] + '</span><span class="amount amount--lg">' + N.money(b[2]) + '</span>' +
+      '<span class="xs muted">' + b[4] + '</span>' +
+      '<a class="btn btn--line btn--sm" href="lot.html" style="align-self:start">' + (b[3] ? "View lot" : "Bid again") + '</a></div>';
+  }).join("");
+
+  function trail(host, rows) {
+    document.getElementById(host).innerHTML = rows.map(function (t, i) {
+      return '<div class="trail__step" data-state="' + t[3] + '"><div class="trail__dot">' + (t[3] === "done" ? "✓" : i + 1) + '</div>' +
+        '<div class="stack stack-2"><div class="trail__head"><strong class="sm">' + t[0] + '</strong><span class="xs mute-3">' + t[1] + '</span></div>' +
+        '<span class="xs muted">' + t[2] + '</span></div></div>';
+    }).join("");
+  }
+  trail("ordertrail", [
+    ["Payment settled", "18 Oct 2026", "AED 890 including AED 40 delivery", "done"],
+    ["Packed with condition evidence", "19 Oct 2026", "Photographed before dispatch", "done"],
+    ["Dispatched", "20 Oct 2026", "Tracking AE-99214-X", "done"],
+    ["Delivered", "21 Oct 2026", "Signed for. Dispute window closed", "done"]
+  ]);
+  trail("apptrail", [
+    ["Submitted", "02 Nov 2026", "Received and queued", "done"],
+    ["Case officer assigned", "02 Nov 2026", "Noura K.", "done"],
+    ["Awaiting one document", "In progress", "Tenancy contract or proof of address", "pending"],
+    ["School verification", "Not started", "Begins when documents are complete", "pending"],
+    ["Committee review", "Not started", "Next sitting is 9 Nov", "pending"]
+  ]);
+
+  document.getElementById("notes").innerHTML = [
+    ["Today, 03:22", "Your contribution of AED 500 to EDU-024 was received and reserved.", "chip--brand"],
+    ["01 Nov, 21:14", "You are the highest bidder on lot A-018 at AED 2,200.", "chip--good"],
+    ["01 Nov, 19:40", "You were outbid on lot A-021. The lot closes in 7 hours.", "chip--warn"],
+    ["31 Oct, 16:02", "Case EDU-033 was paid to the examination board, ref PAY-5518.", "chip--good"],
+    ["30 Oct, 10:15", "Item ITM-018 was collected. Custody receipt CR-0318.", "chip--gold"],
+    ["28 Oct, 09:00", "Your application APP-024 needs one more document.", "chip--warn"]
+  ].map(function (n) {
+    return '<div class="card row-between" style="padding:14px 16px"><span class="sm" style="max-width:62ch">' + n[1] + '</span>' +
+      '<span class="xs mute-3 num">' + n[0] + '</span></div>';
+  }).join("");
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

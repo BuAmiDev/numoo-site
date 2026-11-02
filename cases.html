@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cases &middot; numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype. Every case below is fictional.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="phero ">
+        <img src="img/classroom.webp" alt="">
+        <div class="phero__in">
+          <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Cases</span></nav>
+          <h1 class="display h-hero">Cases open for support</h1>
+          <p class="lede">Every case here has been checked by the charity&rsquo;s committee. What you see is the redacted version of a file held in full &mdash; no names, no faces, no classrooms.</p>
+          <div class="row"><a class="btn btn--primary btn--lg" href="#list">Browse cases<span class="arr" data-icon="arrowup" data-size="14"></span></a><a class="btn btn--glass btn--lg" href="case.html#fund">Give to the Education Fund</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-5">
+      <div class="stack stack-4">
+        <div class="row" role="group" aria-label="Filter by emirate" id="f-emirate"></div>
+        <div class="row" role="group" aria-label="Filter by need" id="f-type"></div>
+      </div>
+      <div class="row-between">
+        <p class="sm muted" id="count"></p>
+        <label class="row sm" style="gap:8px"><span class="mute-3">Sort</span>
+          <select class="select" id="sort" style="inline-size:auto;padding-block:7px">
+            <option value="urgent">Closing soonest</option>
+            <option value="gap">Largest gap remaining</option>
+            <option value="small">Smallest amount to close</option>
+          </select>
+        </label>
+      </div>
+      <div class="grid g-3" id="list"></div>
+      <div class="notice" id="empty" hidden>
+        <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.5-4.5"/></svg>
+        <div class="stack stack-2"><strong class="sm">No cases match those filters.</strong>
+          <span class="sm muted">Clear a filter, or give to the Education Fund and let the committee direct it.</span>
+          <button class="btn btn--line btn--sm" id="clearf" style="align-self:start">Clear filters</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight" style="background:var(--surface-2);border-block:1px solid var(--line)">
+    <div class="shell grid g-3">
+      <div class="stack stack-3"><span class="h3">Why there is no photograph</span>
+        <p class="sm muted">A child who needed help should not be recognisable years later because of it. Cases carry a reference number and a generated mark, never a face, a name or a class.</p></div>
+      <div class="stack stack-3"><span class="h3">Why the amounts are odd</span>
+        <p class="sm muted">The target is the school invoice minus any discount the school agreed and any scholarship already in place. It is what remains, not what was asked for.</p></div>
+      <div class="stack stack-3"><span class="h3">What happens if a case overfunds</span>
+        <p class="sm muted">Collection pauses at the target. Anything received in the same moment is refunded or, with the donor's explicit agreement, moved to the Education Fund.</p></div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO, state = { emirate: "All", type: "All" };
+  var emirates = ["All"].concat(N.CASES.map(function (c) { return c.emirate; }).filter(function (v, i, a) { return a.indexOf(v) === i; }));
+  var types = ["All", "Tuition", "Examination fees", "Books and uniform", "Tuition and transport"];
+
+  function chips(host, list, key) {
+    document.getElementById(host).innerHTML = list.map(function (v) {
+      return '<button class="filterchip" type="button" data-v="' + v + '" aria-pressed="' + (state[key] === v) + '">' +
+        (v === "All" ? (key === "emirate" ? "All emirates" : "All needs") : v) + '</button>';
+    }).join("");
+    N.qsa("#" + host + " button").forEach(function (b) {
+      b.addEventListener("click", function () { state[key] = b.dataset.v; chips(host, list, key); render(); });
+    });
+  }
+
+  function render() {
+    var rows = N.CASES.filter(function (c) {
+      return (state.emirate === "All" || c.emirate === state.emirate) &&
+             (state.type === "All" || c.type === state.type);
+    });
+    var sort = document.getElementById("sort").value;
+    rows.sort(function (a, b) {
+      if (sort === "urgent") return (a.days || 999) - (b.days || 999);
+      if (sort === "gap") return (b.need - b.raised) - (a.need - a.raised);
+      return (a.need - a.raised) - (b.need - b.raised);
+    });
+    document.getElementById("count").textContent = rows.length + (rows.length === 1 ? " case" : " cases") +
+      " · " + N.money(rows.reduce(function (s, c) { return s + (c.need - c.raised); }, 0)) + " still to raise";
+    document.getElementById("empty").hidden = rows.length > 0;
+    document.getElementById("list").innerHTML = rows.map(N.caseCard).join("");
+    N.refresh();
+  }
+
+  chips("f-emirate", emirates, "emirate");
+  chips("f-type", types, "type");
+  document.getElementById("sort").addEventListener("change", render);
+  document.getElementById("clearf").addEventListener("click", function () {
+    state.emirate = "All"; state.type = "All";
+    chips("f-emirate", emirates, "emirate"); chips("f-type", types, "type"); render();
+  });
+  render();
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

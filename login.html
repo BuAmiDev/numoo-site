@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sign in &middot; numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+<style>
+  .auth{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-radius:var(--r-xl);overflow:hidden;
+    background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-lift);min-block-size:680px}
+  .auth__ph{position:relative;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3.5vw,44px);isolation:isolate}
+  .auth__ph > img{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;z-index:-2}
+  .auth__ph::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,14,32,.25) 0%,rgba(3,14,32,.85) 100%)}
+  .auth__form{padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:22px;justify-content:center}
+  @media(max-width:900px){.auth{grid-template-columns:minmax(0,1fr)}.auth__ph{min-block-size:260px}}
+  .uaepass{background:#fff;color:#0A1A2F;border:1px solid var(--line);font-weight:600}
+  .uaepass:hover{border-color:var(--ink)}
+  :root[data-theme="dark"] .uaepass{background:var(--surface-2);color:var(--ink)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .uaepass{background:var(--surface-2);color:var(--ink)}}
+  .or{display:flex;align-items:center;gap:12px;color:var(--ink-3);font-size:var(--t-xs)}
+  .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+  .otp{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+  .otp input{text-align:center;font-family:var(--display);font-size:1.4rem;font-weight:600;padding:14px 0}
+  .roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .role{position:relative}
+  .role input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+  .role > span{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:18px;border:1px solid var(--line);background:var(--surface);transition:all .15s;block-size:100%}
+  .role input:hover + span{border-color:var(--brand)}
+  .role input:checked + span{border-color:var(--brand);background:var(--brand-wash);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 18%,transparent)}
+  .role input:focus-visible + span{outline:3px solid var(--cyan);outline-offset:2px}
+  .role .iconbox{inline-size:40px;block-size:40px;border-radius:12px}
+  @media(max-width:480px){.roles{grid-template-columns:minmax(0,1fr)}}
+  .portal{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line)}
+  .portal:hover{border-color:var(--brand)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf" style="color:var(--cyan)"></span><span>Concept prototype. Any code works and no account is created.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown to prove the right-to-left layout. Full translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section class="band--tight" style="padding-block:8px 48px">
+    <div class="shell stack stack-6">
+      <div class="auth">
+        <div class="auth__ph">
+          <img src="img/school.webp" alt="A modern UAE school building at golden hour">
+          <span class="mark__img" style="background-color:#fff;width:140px;height:23px"></span>
+          <div class="stack stack-4">
+            <h1 class="display h1" style="max-width:13ch">One account for everything you do here.</h1>
+            <ul class="stack stack-3 sm" style="opacity:.92">
+              <li class="row" style="gap:10px;flex-wrap:nowrap"><span class="iconbox" style="inline-size:34px;block-size:34px;border-radius:10px;background:rgba(255,255,255,.16);color:#fff" data-icon="heart" data-size="16"></span>Track every donation to the school that was paid</li>
+              <li class="row" style="gap:10px;flex-wrap:nowrap"><span class="iconbox" style="inline-size:34px;block-size:34px;border-radius:10px;background:rgba(255,255,255,.16);color:#fff" data-icon="gavel" data-size="16"></span>Bid in auctions and follow items you gave</li>
+              <li class="row" style="gap:10px;flex-wrap:nowrap"><span class="iconbox" style="inline-size:34px;block-size:34px;border-radius:10px;background:rgba(255,255,255,.16);color:#fff" data-icon="lock" data-size="16"></span>Apply for support in a private, separate space</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="auth__form">
+          <div class="tabs" data-tabs="auth" role="tablist">
+            <button role="tab" aria-selected="true" data-target="signin">Sign in</button>
+            <button role="tab" aria-selected="false" data-target="signup">Create account</button>
+          </div>
+
+          <!-- sign in -->
+          <div data-panel="signin" data-group="auth" class="stack stack-5">
+            <div id="si-1" class="stack stack-5">
+              <div class="stack stack-2"><h2 class="display h2">Welcome back</h2><p class="sm muted">Sign in with UAE PASS, or get a one-time code by SMS or email.</p></div>
+              <a class="btn btn--lg btn--block uaepass" href="my-numoo.html"><span data-icon="shield" data-size="18"></span>Continue with UAE PASS</a>
+              <div class="or">or use a one-time code</div>
+              <div class="field"><label for="si-id">Mobile number or email</label>
+                <input class="input" id="si-id" value="+971 50 123 4567" autocomplete="username"></div>
+              <button class="btn btn--primary btn--lg btn--block" type="button" id="si-send">Send code</button>
+              <p class="xs mute-3 center">No password to remember. Codes expire after five minutes.</p>
+            </div>
+            <div id="si-2" class="stack stack-5" hidden>
+              <div class="stack stack-2"><h2 class="display h2">Enter your code</h2><p class="sm muted">We sent a six-digit code to <strong>+971 50 &bull;&bull;&bull; 4567</strong>.</p></div>
+              <div class="otp" role="group" aria-label="Six-digit code">
+                <input class="input" inputmode="numeric" maxlength="1" value="4" aria-label="Digit 1"><input class="input" inputmode="numeric" maxlength="1" value="8" aria-label="Digit 2">
+                <input class="input" inputmode="numeric" maxlength="1" value="2" aria-label="Digit 3"><input class="input" inputmode="numeric" maxlength="1" value="9" aria-label="Digit 4">
+                <input class="input" inputmode="numeric" maxlength="1" value="1" aria-label="Digit 5"><input class="input" inputmode="numeric" maxlength="1" value="6" aria-label="Digit 6">
+              </div>
+              <a class="btn btn--primary btn--lg btn--block" href="my-numoo.html">Verify and sign in</a>
+              <div class="row-between sm"><button class="btn btn--ghost btn--sm" type="button" id="si-back">Change number</button><span class="mute-3">Resend in 0:42</span></div>
+            </div>
+          </div>
+
+          <!-- sign up -->
+          <div data-panel="signup" data-group="auth" class="stack stack-5" hidden>
+            <div class="stack stack-2"><h2 class="display h2">What brings you to numoo?</h2><p class="sm muted">Choose any that apply. You can add more later from your account.</p></div>
+            <div class="roles">
+              <label class="role"><input type="checkbox" name="role" value="give" checked><span><span class="iconbox" data-icon="heart"></span><strong class="sm">Give to cases</strong><span class="xs muted">Donate once or monthly</span></span></label>
+              <label class="role"><input type="checkbox" name="role" value="bid"><span><span class="iconbox iconbox--gold" data-icon="gavel"></span><strong class="sm">Bid in auctions</strong><span class="xs muted">Needs a quick bidder check</span></span></label>
+              <label class="role"><input type="checkbox" name="role" value="item"><span><span class="iconbox iconbox--gold" data-icon="gift"></span><strong class="sm">Donate items</strong><span class="xs muted">Offer and track your items</span></span></label>
+              <label class="role"><input type="checkbox" name="role" value="apply"><span><span class="iconbox iconbox--good" data-icon="lock"></span><strong class="sm">Apply for support</strong><span class="xs muted">Kept private and separate</span></span></label>
+            </div>
+            <div class="notice notice--gold" id="bidnote" hidden><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              <span class="sm">Before your first bid we&rsquo;ll verify your mobile and add a payment method, because a winning bid is a commitment to pay. Higher-value lots may also ask for Emirates ID.</span></div>
+            <div class="notice notice--good" id="appnote" hidden><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <span class="sm">Your application lives in a private area of your account. It is never shown alongside your giving, and only the charity&rsquo;s case officers can open it.</span></div>
+            <a class="btn btn--lg btn--block uaepass" href="my-numoo.html"><span data-icon="shield" data-size="18"></span>Sign up with UAE PASS</a>
+            <div class="or">or</div>
+            <div class="field"><label for="su-id">Mobile number or email</label><input class="input" id="su-id" placeholder="+971 5x xxx xxxx" autocomplete="username"></div>
+            <button class="btn btn--primary btn--lg btn--block" type="button" id="su-send">Create account</button>
+            <p class="xs mute-3 center">By continuing you agree to the charity&rsquo;s terms and privacy notice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid g-2">
+        <a class="portal" href="corporate.html#programmes"><span class="iconbox" data-icon="building"></span>
+          <span class="stack" style="gap:2px;flex:1"><strong class="sm">Company account</strong><span class="xs muted">Sign in to your organisation&rsquo;s CSR workspace</span></span><span class="roundarrow" data-icon="arrowup" data-size="16"></span></a>
+        <a class="portal" href="workspace.html"><span class="iconbox" style="background:var(--night);color:#fff" data-icon="shield"></span>
+          <span class="stack" style="gap:2px;flex:1"><strong class="sm">Charity staff and committee</strong><span class="xs muted">Separate sign-in, two-factor required</span></span><span class="roundarrow" data-icon="arrowup" data-size="16"></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var $ = function (id) { return document.getElementById(id); };
+  $("si-send").addEventListener("click", function () { $("si-1").hidden = true; $("si-2").hidden = false; });
+  $("si-back").addEventListener("click", function () { $("si-2").hidden = true; $("si-1").hidden = false; });
+  $("su-send").addEventListener("click", function () { location.href = "my-numoo.html"; });
+  function roles() {
+    $("bidnote").hidden = !document.querySelector('input[value="bid"]').checked;
+    $("appnote").hidden = !document.querySelector('input[value="apply"]').checked;
+  }
+  window.NUMOO.qsa('input[name="role"]').forEach(function (i) { i.addEventListener("change", roles); });
+  window.NUMOO.qsa(".otp input").forEach(function (inp, i, all) {
+    inp.addEventListener("input", function () { if (inp.value && all[i + 1]) all[i + 1].focus(); });
+  });
+  if (location.hash === "#signup") document.querySelector('[data-target="signup"]').click();
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

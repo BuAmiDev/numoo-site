@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Corporate giving</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype. The company, programme and figures below are fictional.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="phero ">
+        <img src="img/corporate.webp" alt="">
+        <div class="phero__in">
+          <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Corporate giving</span></nav>
+          <h1 class="display h-hero">CSR you can put in front of an auditor.</h1>
+          <p class="lede">Four figures that can never be confused: what you committed, what you paid, what reached a school, and what the school confirmed afterwards.</p>
+          <div class="row"><a class="btn btn--white btn--lg" href="#programmes">See the workspace<span class="arr" data-icon="arrowup" data-size="14"></span></a><a class="btn btn--glass btn--lg" href="trust.html">How money is handled</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight" id="programmes">
+    <div class="shell stack stack-6">
+      <div class="row-between">
+        <div class="stack stack-2">
+          <h2 class="display h2">Corporate workspace</h2>
+          <p class="sm mute-3">Meridian Gulf Holdings &middot; 3 authorised users &middot; financial year to 31 Dec 2026</p>
+        </div>
+        <span class="chip chip--brand">Example account</span>
+      </div>
+      <div class="grid g-4" id="kpis"></div>
+
+      <div class="tabs" data-tabs="corp" role="tablist">
+        <button role="tab" aria-selected="true" data-target="prog">Programmes</button>
+        <button role="tab" aria-selected="false" data-target="match">Employee matching</button>
+        <button role="tab" aria-selected="false" data-target="drive">Item drive</button>
+        <button role="tab" aria-selected="false" data-target="rep">Reporting</button>
+      </div>
+
+      <div data-panel="prog" data-group="corp" class="stack stack-5">
+        <div class="tablewrap"><table class="t"><caption class="sr">Programmes</caption>
+          <thead><tr><th>Programme</th><th>Restriction</th><th style="text-align:end">Pledged</th><th style="text-align:end">Received</th><th style="text-align:end">Disbursed</th><th>Status</th></tr></thead>
+          <tbody id="progrows"></tbody></table></div>
+        <div class="notice notice--brand">
+          <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+          <p class="sm">Pledged is a commitment, not income. Your CSR report shows both and never adds them together. Disbursed is the only figure that means a school has been paid.</p>
+        </div>
+        <button class="btn btn--primary" type="button" style="align-self:start">Create a programme</button>
+      </div>
+
+      <div data-panel="match" data-group="corp" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-4">
+            <h3 class="h3">Matching rules</h3>
+            <div class="card stack stack-4">
+              <div class="row" style="gap:12px">
+                <div class="field" style="flex:1"><label for="ratio">Match ratio</label>
+                  <select class="select" id="ratio"><option>1:1</option><option>2:1</option><option>0.5:1</option></select></div>
+                <div class="field" style="flex:1"><label for="cap">Annual cap per employee</label>
+                  <input class="input num" id="cap" value="5000" inputmode="numeric"></div>
+              </div>
+              <div class="field"><label for="mrestrict">Match is restricted to</label>
+                <select class="select" id="mrestrict"><option>Any approved case</option><option>Cases in the emirate of the office</option><option>The Grade 9 to 12 cohort</option></select></div>
+              <label class="choice"><input type="checkbox" checked><span class="xs">Pause matching automatically when the annual budget is exhausted, rather than overspending and reconciling later.</span></label>
+            </div>
+          </div>
+          <div class="stack stack-4">
+            <h3 class="h3">This year</h3>
+            <div class="tablewrap"><table class="t"><caption class="sr">Employee matching</caption>
+              <tbody>
+                <tr><td>Employees giving</td><td class="n" style="text-align:end">84</td></tr>
+                <tr><td>Employee contributions</td><td class="n" style="text-align:end">AED 196,400</td></tr>
+                <tr><td>Matched by the company</td><td class="n" style="text-align:end">AED 181,000</td></tr>
+                <tr><td>Capped out</td><td class="n" style="text-align:end">7 employees</td></tr>
+                <tr><td>Budget remaining</td><td class="n" style="text-align:end">AED 69,000</td></tr>
+              </tbody></table></div>
+            <p class="xs mute-3">Employee identities are not shared with the charity beyond what is needed to apply the cap, and never appear on a public page.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="drive" data-group="corp" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-4">
+            <h3 class="h3">Autumn item drive</h3>
+            <p class="body sm">Staff offered items through the platform under your drive code. The charity pre-screened each offer, collected accepted items from your Dubai office in two scheduled visits, and sold them in the November sale.</p>
+            <div class="tablewrap"><table class="t"><caption class="sr">Item drive</caption>
+              <tbody>
+                <tr><td>Items offered</td><td class="n" style="text-align:end">61</td></tr>
+                <tr><td>Accepted after pre-screen</td><td class="n" style="text-align:end">38</td></tr>
+                <tr><td>Accepted after inspection</td><td class="n" style="text-align:end">34</td></tr>
+                <tr><td>Sold</td><td class="n" style="text-align:end">29</td></tr>
+                <tr><td>Gross sale value</td><td class="n" style="text-align:end">AED 84,600</td></tr>
+                <tr><td>Disclosed sale costs</td><td class="n" style="text-align:end">&minus; AED 11,900</td></tr>
+                <tr><td><strong>Net to the Education Fund</strong></td><td class="n" style="text-align:end"><strong>AED 72,700</strong></td></tr>
+              </tbody></table></div>
+          </div>
+          <div class="card stack stack-3">
+            <span class="label">Why the numbers drop at each stage</span>
+            <p class="sm muted">Offers decline at pre-screen for value or category, and again at inspection for condition or authenticity. Five accepted lots did not meet their reserve and were returned to their donors under the agreed terms.</p>
+            <p class="sm muted">Reporting a drive by items offered rather than by net proceeds would overstate it by a factor of two.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="rep" data-group="corp" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-4">
+            <h3 class="h3">What a report contains</h3>
+            <ul class="stack stack-3 sm muted">
+              <li>Contributions received, by programme and by date, with settlement references.</li>
+              <li>Allocations made against each restriction, and any allocation refused because it breached one.</li>
+              <li>Disbursements to schools, with payment references and reconciliation dates.</li>
+              <li>Outcomes the schools confirmed, and the cases where they did not.</li>
+              <li>Refunds, chargebacks and reallocations, shown rather than netted off quietly.</li>
+            </ul>
+            <p class="xs mute-3">Published quarterly in the workspace. The annual figures are prepared alongside the charity's statutory accounts.</p>
+          </div>
+          <div class="card stack stack-4">
+            <span class="h3">Your impact page</span>
+            <p class="sm muted">A page carrying your name, the programmes you funded and the figures above. It states what the charity confirmed and nothing beyond that.</p>
+            <div class="card stack stack-3" style="background:var(--surface-2)">
+              <span class="label">Preview</span>
+              <strong class="sm">Meridian Gulf Holdings funded 46 students in Sharjah and Ajman in 2026.</strong>
+              <span class="xs muted">AED 412,000 disbursed to 11 schools. 43 of 46 confirmed still enrolled at the end of the funded period.</span>
+            </div>
+            <p class="xs mute-3">Claims that the charity has not verified cannot be added to this page.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink band--tight">
+    <div class="shell row-between">
+      <div class="stack stack-3" style="max-width:54ch">
+        <h2 class="display h2" style="color:#fff">Talk to the charity about a programme</h2>
+        <p class="sm" style="color:#A9C8DD">Restrictions, caps and reporting are agreed before any money moves.</p>
+      </div>
+      <a class="btn btn--primary btn--lg" href="how-it-works.html">How it works for companies</a>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+  document.getElementById("kpis").innerHTML = [
+    [N.money(750000), "pledged for the financial year"],
+    [N.money(589400), "received to date"],
+    [N.money(412000), "disbursed to schools"],
+    ["43 of 46", "students confirmed still enrolled"]
+  ].map(function (k) {
+    return '<div class="statcard"><span class="kpi__v grad-text">' + k[0] + '</span><span class="kpi__l">' + k[1] + '</span></div>';
+  }).join("");
+
+  var progs = [
+    ["Sharjah secondary cohort", "Grades 9–12, Sharjah", 400000, 320000, 264000, "Active", "chip--good"],
+    ["Ajman primary places", "Grades 1–6, Ajman", 200000, 180000, 148000, "Active", "chip--good"],
+    ["Examination fees fund", "Examination fees only", 100000, 89400, 0, "Awaiting allocation", "chip--brand"],
+    ["Employee matching budget", "Any approved case", 50000, 0, 0, "Opens 1 Jan 2027", "chip"]
+  ];
+  document.getElementById("progrows").innerHTML = progs.map(function (p) {
+    return '<tr><td>' + p[0] + '</td><td class="sm muted">' + p[1] + '</td>' +
+      '<td class="n" style="text-align:end">' + N.money(p[2]) + '</td>' +
+      '<td class="n" style="text-align:end">' + N.money(p[3]) + '</td>' +
+      '<td class="n" style="text-align:end">' + N.money(p[4]) + '</td>' +
+      '<td><span class="chip ' + p[6] + '">' + p[5] + '</span></td></tr>';
+  }).join("");
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

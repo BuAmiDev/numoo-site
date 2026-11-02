@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Staff workspace</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype of the charity's internal workspace. No beneficiary identity appears in this demonstration.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell stack stack-5">
+      <div class="phero" style="min-block-size:260px">
+        <img src="img/docs.webp" alt="">
+        <div class="phero__in">
+          <span class="chip chip--glass" style="align-self:start">Case officer &middot; access limited by role &middot; logged</span>
+          <h1 class="display h1">Good morning, Noura</h1>
+          <p class="lede">23 cases in your queue. Three need attention today.</p>
+        </div>
+      </div>
+      <div class="grid g-4" id="kpis"></div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-6">
+      <div class="tabs" data-tabs="ws" role="tablist">
+        <button role="tab" aria-selected="true" data-target="queue">Case queue</button>
+        <button role="tab" aria-selected="false" data-target="review">Application review</button>
+        <button role="tab" aria-selected="false" data-target="decide">Funding decision</button>
+        <button role="tab" aria-selected="false" data-target="items">Item inspection</button>
+        <button role="tab" aria-selected="false" data-target="fin">Finance approvals</button>
+        <button role="tab" aria-selected="false" data-target="audit">Audit log</button>
+      </div>
+
+      <div data-panel="queue" data-group="ws" class="stack stack-5">
+        <div class="row">
+          <button class="filterchip" type="button" aria-pressed="true">All 23</button>
+          <button class="filterchip" type="button" aria-pressed="false">Breaching SLA 3</button>
+          <button class="filterchip" type="button" aria-pressed="false">Awaiting documents 6</button>
+          <button class="filterchip" type="button" aria-pressed="false">Ready for committee 5</button>
+        </div>
+        <div class="tablewrap"><table class="t"><caption class="sr">Case queue</caption>
+          <thead><tr><th>Reference</th><th>Stage</th><th>Need</th><th style="text-align:end">Amount</th><th>Waiting</th><th>Owner</th></tr></thead>
+          <tbody id="queue"></tbody></table></div>
+        <p class="xs mute-3">Sorted by time in stage. Anything over its service level is escalated to the team lead automatically; the escalation is recorded against the case, not sent as a private message.</p>
+      </div>
+
+      <div data-panel="review" data-group="ws" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-5">
+            <div class="row-between">
+              <h2 class="h3">Application APP-024</h2>
+              <span class="chip chip--warn">Awaiting one document</span>
+            </div>
+            <div class="notice notice--brand">
+              <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <p class="sm">Identifying fields are masked in this concept demonstration. In the production workspace they are visible to assigned case officers only, and every view is logged.</p>
+            </div>
+            <div class="tablewrap"><table class="t"><caption class="sr">Verification checklist</caption>
+              <thead><tr><th>Check</th><th>Evidence</th><th>Result</th></tr></thead>
+              <tbody id="checks"></tbody></table></div>
+            <div class="card stack stack-4">
+              <span class="h3">Duplicate and double-funding check</span>
+              <div class="stack stack-3">
+                <div class="row-between sm"><span>Existing numoo application for this child</span><span class="chip chip--good">None found</span></div>
+                <div class="row-between sm"><span>School-applied discount or scholarship</span><span class="chip chip--warn">10% sibling discount declared</span></div>
+                <div class="row-between sm"><span>Support from another organisation</span><span class="chip chip--good">None declared, school confirms</span></div>
+              </div>
+              <p class="xs mute-3">The declared discount is deducted before a target is set. Unreconciled aid is the most common reason a case is paused.</p>
+            </div>
+          </div>
+          <div class="stack stack-4">
+            <div class="card stack stack-4">
+              <span class="h3">Request what is missing</span>
+              <div class="field"><label for="reqdoc">Document</label>
+                <select class="select" id="reqdoc"><option>Tenancy contract or proof of address</option><option>Updated fee statement</option><option>Letter of contract end</option></select></div>
+              <div class="field"><label for="reqnote">Note to the applicant</label>
+                <textarea class="textarea" id="reqnote" style="min-block-size:80px">We need a tenancy contract or a utility bill showing your address. A photo of the document is fine.</textarea></div>
+              <button class="btn btn--primary btn--sm" type="button" style="align-self:start">Request and pause review</button>
+              <p class="xs mute-3">Pausing stops the service clock and tells the applicant exactly what is needed.</p>
+            </div>
+            <div class="card stack stack-3">
+              <span class="label">Your access</span>
+              <p class="xs muted">You can see this file because you are the assigned officer. Logistics staff see collection data only. Specialists see item data only. Corporate users see aggregates only.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="decide" data-group="ws" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-5">
+            <h2 class="h3">Committee decision &middot; APP-024</h2>
+            <div class="card stack stack-4">
+              <span class="h3">Verified need</span>
+              <div class="tablewrap"><table class="t"><tbody>
+                <tr><td>School invoice, two terms</td><td class="n" style="text-align:end">AED 20,000</td></tr>
+                <tr><td>Goodwill discount agreed with the school</td><td class="n" style="text-align:end">&minus; AED 2,000</td></tr>
+                <tr><td><strong>Approved need</strong></td><td class="n" style="text-align:end"><strong>AED 18,000</strong></td></tr>
+              </tbody></table></div>
+            </div>
+            <fieldset class="card stack stack-4" style="border:1px solid var(--line)">
+              <legend class="flabel" style="padding-inline:6px">Funding route</legend>
+              <label class="choice"><input type="radio" name="route" value="direct">
+                <span class="stack stack-2"><span class="choice__t">Direct from the Education Fund</span>
+                <span class="xs muted">No public page. Available balance AED 184,200. This amount is above the delegated authority limit, so two committee members must approve.</span></span></label>
+              <label class="choice"><input type="radio" name="route" value="campaign" checked>
+                <span class="stack stack-2"><span class="choice__t">Public anonymised campaign</span>
+                <span class="xs muted">Guardian consent to publish is on file. Nothing identifying is carried into the public record.</span></span></label>
+              <label class="choice"><input type="radio" name="route" value="mixed">
+                <span class="stack stack-2"><span class="choice__t">Fund allocation plus campaign</span>
+                <span class="xs muted">Allocate part now, raise the remainder publicly. The allocation is recorded as an allocation, never as a donation.</span></span></label>
+            </fieldset>
+            <div class="field"><label for="rationale">Recorded rationale</label>
+              <textarea class="textarea" id="rationale">Income loss verified against the end-of-contract letter. School confirmed arrears and agreed a discount. Household has no other support. Campaign preferred over direct funding to preserve fund balance for urgent cases.</textarea>
+              <span class="hint">Stored with the decision, the quorum and any recusals. It cannot be edited after the decision is recorded.</span></div>
+            <div class="row" style="gap:10px">
+              <button class="btn btn--primary" type="button">Record approval</button>
+              <button class="btn btn--line" type="button">Decline with a reason</button>
+            </div>
+          </div>
+          <div class="stack stack-4">
+            <div class="card stack stack-4">
+              <span class="h3">Quorum and conflicts</span>
+              <div class="stack stack-3 sm">
+                <div class="row-between"><span>Members present</span><span class="num">4 of 5</span></div>
+                <div class="row-between"><span>Quorum required</span><span class="num">3</span></div>
+                <div class="row-between"><span>Recusals</span><span class="chip chip--warn">1 declared</span></div>
+              </div>
+              <p class="xs mute-3">One member declared a connection to the school and has been excluded from this decision and from any later payment approval on it.</p>
+            </div>
+            <div class="notice notice--warn">
+              <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+              <p class="xs">Approval is not payment. A separate finance approval, by two different people, is required before any money moves.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="items" data-group="ws" hidden class="stack stack-5">
+        <div class="split">
+          <div class="stack stack-5">
+            <h2 class="h3">Item inspection &middot; ITM-018</h2>
+            <div class="card"><div class="trail" id="custody"></div></div>
+            <div class="card stack stack-4">
+              <span class="h3">Release to auction</span>
+              <div class="stack stack-3 sm">
+                <div class="row-between"><span>Specialist report attached</span><span class="chip chip--good">Yes</span></div>
+                <div class="row-between"><span>Ownership declaration signed</span><span class="chip chip--good">Yes</span></div>
+                <div class="row-between"><span>Condition photographs</span><span class="chip chip--good">11 images</span></div>
+                <div class="row-between"><span>Reserve agreed with the donor</span><span class="chip chip--good">AED 1,800</span></div>
+                <div class="row-between"><span>Restricted or unsafe goods check</span><span class="chip chip--good">Passed</span></div>
+              </div>
+              <button class="btn btn--gold btn--sm" type="button" style="align-self:start">Release lot to the November sale</button>
+              <p class="xs mute-3">Release is blocked while authenticity or ownership is unresolved. The block cannot be overridden from this screen.</p>
+            </div>
+          </div>
+          <div class="stack stack-4">
+            <div class="card stack stack-3">
+              <span class="label">Costs recorded against this item</span>
+              <div class="tablewrap"><table class="t"><tbody>
+                <tr><td>Collection</td><td class="n" style="text-align:end">AED 50</td></tr>
+                <tr><td>Authentication</td><td class="n" style="text-align:end">AED 80</td></tr>
+                <tr><td>Photography and packing</td><td class="n" style="text-align:end">AED 30</td></tr>
+                <tr><td>Payment processing</td><td class="n" style="text-align:end">AED 40</td></tr>
+                <tr><td><strong>Total sale cost</strong></td><td class="n" style="text-align:end"><strong>AED 200</strong></td></tr>
+              </tbody></table></div>
+              <p class="xs mute-3">Recorded per item so that net proceeds, not gross, are reported to the donor and to the fund.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-panel="fin" data-group="ws" hidden class="stack stack-5">
+        <div class="notice notice--warn">
+          <svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          <div class="stack stack-2"><strong class="sm">You prepared two of these payments</strong>
+            <span class="xs">Preparer and authoriser must be different people. The authorise control is disabled on the rows you prepared, for every role including administrators.</span></div>
+        </div>
+        <div class="tablewrap"><table class="t"><caption class="sr">Payments awaiting approval</caption>
+          <thead><tr><th>Case</th><th>Payee</th><th style="text-align:end">Amount</th><th>Bank check</th><th>Prepared by</th><th>Action</th></tr></thead>
+          <tbody id="fin"></tbody></table></div>
+        <div class="grid g-3">
+          <div class="card stack stack-2"><span class="label">Opening balance</span><span class="amount amount--lg">AED 412,800</span></div>
+          <div class="card stack stack-2"><span class="label">Awaiting approval</span><span class="amount amount--lg">AED 48,900</span></div>
+          <div class="card stack stack-2"><span class="label">Unreconciled since yesterday</span><span class="amount amount--lg" style="color:var(--warn)">AED 1,200</span></div>
+        </div>
+      </div>
+
+      <div data-panel="audit" data-group="ws" hidden class="stack stack-5">
+        <h2 class="h3">Audit log</h2>
+        <div class="tablewrap"><table class="t"><caption class="sr">Audit log</caption>
+          <thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Record</th></tr></thead>
+          <tbody id="audit"></tbody></table></div>
+        <p class="xs mute-3">Append-only. Viewing a sensitive record is itself an event. Exports of personal data are logged with the requester, the reason and the row count.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+  document.getElementById("kpis").innerHTML = [
+    ["23", "cases in your queue"],
+    ["3", "breaching the service level"],
+    ["5", "ready for the committee on 9 Nov"],
+    ["AED 48,900", "payments awaiting a second approval"]
+  ].map(function (k) {
+    return '<div class="statcard"><span class="kpi__v grad-text">' + k[0] + '</span><span class="kpi__l">' + k[1] + '</span></div>';
+  }).join("");
+
+  var queue = [
+    ["APP-024", "Awaiting documents", "Tuition", 18000, "2 days", "Noura K.", "chip--warn"],
+    ["APP-031", "School verification", "Tuition and transport", 9400, "1 day", "Noura K.", "chip"],
+    ["APP-040", "Triage", "Examination fees", 4200, "4 hours", "Unassigned", "chip"],
+    ["APP-018", "Committee ready", "Tuition", 21500, "6 days", "Yousef M.", "chip--good"],
+    ["APP-022", "School verification", "Books and uniform", 3600, "9 days", "Noura K.", "chip--warn"],
+    ["APP-037", "Appeal", "Tuition", 12000, "3 days", "Team lead", "chip--brand"]
+  ];
+  document.getElementById("queue").innerHTML = queue.map(function (q) {
+    return '<tr><td class="n">' + q[0] + '</td><td><span class="chip ' + q[6] + '">' + q[1] + '</span></td>' +
+      '<td class="sm">' + q[2] + '</td><td class="n" style="text-align:end">' + N.money(q[3]) + '</td>' +
+      '<td class="n xs">' + q[4] + '</td><td class="sm muted">' + q[5] + '</td></tr>';
+  }).join("");
+
+  document.getElementById("checks").innerHTML = [
+    ["Guardian identity", "Emirates ID, verified against the application name", "Passed", "chip--good"],
+    ["Guardian authority", "Named on the school record as the fee payer", "Passed", "chip--good"],
+    ["Household income", "End-of-contract letter, dated August 2026", "Passed", "chip--good"],
+    ["Address", "Not yet supplied", "Outstanding", "chip--warn"],
+    ["School enrolment", "Confirmed by the school on 16 Oct", "Passed", "chip--good"],
+    ["Amount outstanding", "School statement, AED 20,000", "Passed", "chip--good"],
+    ["Payment destination", "Bank details confirmed by phone, independently of the invoice", "Passed", "chip--good"]
+  ].map(function (c) {
+    return '<tr><td>' + c[0] + '</td><td class="sm muted">' + c[1] + '</td><td><span class="chip ' + c[3] + '">' + c[2] + '</span></td></tr>';
+  }).join("");
+
+  document.getElementById("custody").innerHTML = [
+    ["Offer received", "28 Oct, 14:02", "Pre-screened by N. Khalid", "done"],
+    ["Collected", "30 Oct, 10:15", "Driver ID D-114. Custody receipt CR-0318 signed by the donor", "done"],
+    ["Checked into store", "30 Oct, 15:40", "Bin SH-22. Condition photographs taken on arrival", "done"],
+    ["Released to specialist", "31 Oct, 09:00", "Handover signed. Item left the charity's premises", "done"],
+    ["Returned from specialist", "31 Oct, 17:20", "Report attached. Condition unchanged on return", "done"],
+    ["Catalogued", "01 Nov, 09:20", "Lot A-018 created, reserve agreed with the donor", "done"]
+  ].map(function (t) {
+    return '<div class="trail__step" data-state="done"><div class="trail__dot">✓</div>' +
+      '<div class="stack stack-2"><div class="trail__head"><strong class="sm">' + t[0] + '</strong><span class="xs mute-3 num">' + t[1] + '</span></div>' +
+      '<span class="xs muted">' + t[2] + '</span></div></div>';
+  }).join("");
+
+  var fin = [
+    ["EDU-033", "Examination board", 6500, "Verified 29 Oct", "Noura K.", true],
+    ["EDU-021", "Al Noor Private School", 14200, "Verified 30 Oct", "Yousef M.", false],
+    ["EDU-029", "Horizon International", 18900, "Verified 31 Oct", "Noura K.", true],
+    ["EDU-030", "Al Noor Private School", 9300, "Pending second check", "Yousef M.", false]
+  ];
+  document.getElementById("fin").innerHTML = fin.map(function (f) {
+    var mine = f[5], pending = f[3].indexOf("Pending") === 0;
+    return '<tr><td class="n">' + f[0] + '</td><td class="sm">' + f[1] + '</td>' +
+      '<td class="n" style="text-align:end">' + N.money(f[2]) + '</td>' +
+      '<td><span class="chip ' + (pending ? "chip--warn" : "chip--good") + '">' + f[3] + '</span></td>' +
+      '<td class="sm muted">' + f[4] + '</td><td>' +
+      (mine ? '<button class="btn btn--sm btn--line" disabled title="You prepared this payment">Authorise</button>'
+            : pending ? '<button class="btn btn--sm btn--line" disabled>Awaiting bank check</button>'
+            : '<button class="btn btn--sm btn--primary" type="button">Authorise</button>') +
+      '</td></tr>';
+  }).join("");
+
+  document.getElementById("audit").innerHTML = [
+    ["02 Nov, 03:22", "system", "Donation received and reserved", "EDU-024 / PAY-5602"],
+    ["02 Nov, 02:14", "Noura K.", "Viewed application evidence", "APP-024"],
+    ["01 Nov, 18:40", "Yousef M.", "Authorised disbursement", "EDU-029 / AED 18,900"],
+    ["01 Nov, 18:38", "Noura K.", "Prepared disbursement", "EDU-029 / AED 18,900"],
+    ["01 Nov, 12:00", "system", "Lot released to auction", "ITM-018 / A-018"],
+    ["01 Nov, 09:20", "A. Rahman", "Agreed reserve with the donor", "ITM-018"],
+    ["31 Oct, 16:02", "system", "Bank reconciliation completed", "PAY-5518"],
+    ["30 Oct, 11:05", "Team lead", "Recusal recorded", "APP-024 / committee"]
+  ].map(function (a) {
+    return '<tr><td class="n xs">' + a[0] + '</td><td class="sm">' + a[1] + '</td><td class="sm">' + a[2] + '</td><td class="n xs mute-3">' + a[3] + '</td></tr>';
+  }).join("");
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

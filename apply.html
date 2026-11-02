@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Apply for support &middot; numoo</title>
+<link rel="stylesheet" href="assets/numoo.css">
+<style>
+  .hero-apply{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:28px;align-items:end}
+  .needcard{padding:22px;display:flex;flex-direction:column;gap:14px;max-inline-size:400px;justify-self:end}
+  .needcard li{display:flex;gap:12px;align-items:center;font-size:.92rem}
+  .needcard li .iconbox{inline-size:36px;block-size:36px;border-radius:11px}
+  @media(max-width:960px){.hero-apply{grid-template-columns:minmax(0,1fr)}.needcard{justify-self:stretch;max-inline-size:none}}
+
+  .journey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .journey__i{padding:22px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+  .journey__n{font-family:var(--display);font-weight:600;font-size:.85rem;color:var(--brand)}
+  @media(max-width:960px){.journey{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.journey{grid-template-columns:minmax(0,1fr)}}
+
+  .q{display:flex;flex-direction:column;gap:12px;padding-block:18px;border-bottom:1px solid var(--line)}
+  .q:last-of-type{border-bottom:0}
+  .q__t{font-family:var(--display);font-weight:500;font-size:1.08rem;letter-spacing:-.01em}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{position:relative}
+  .opt input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+  .opt span{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r-pill);border:1px solid var(--line);
+    background:var(--surface);font-size:.92rem;font-weight:500;color:var(--ink-2);transition:all .15s}
+  .opt input:hover + span{border-color:var(--brand);color:var(--brand)}
+  .opt input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .opt input:focus-visible + span{outline:3px solid var(--cyan);outline-offset:2px}
+
+  .result{border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;gap:12px}
+  .result--yes{background:var(--good-wash)}
+  .result--part{background:var(--warn-wash)}
+  .result--no{background:var(--surface-2);border:1px solid var(--line)}
+
+  .appwrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start}
+  .vstep{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:12px;border-radius:18px;color:var(--ink-3);align-items:center}
+  .vstep__n{inline-size:36px;block-size:36px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);
+    font-family:var(--display);font-weight:600;font-size:.9rem}
+  .vstep[data-state="current"]{background:var(--brand-wash);color:var(--ink)}
+  .vstep[data-state="current"] .vstep__n{background:var(--grad);color:#fff;border-color:transparent;box-shadow:var(--glow)}
+  .vstep[data-state="done"]{color:var(--ink-2)}
+  .vstep[data-state="done"] .vstep__n{background:var(--good);color:#fff;border-color:transparent}
+  @media(max-width:960px){.appwrap{grid-template-columns:minmax(0,1fr)}.appside{order:2}}
+
+  .formcard{padding:clamp(22px,3vw,40px)}
+  .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  @media(max-width:620px){.two{grid-template-columns:minmax(0,1fr)}}
+  .drop{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;border:1.5px dashed var(--line);background:var(--surface-2);position:relative}
+  .drop:hover{border-color:var(--brand)}
+  .drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .drop--done{border-style:solid;border-color:transparent;background:var(--good-wash)}
+  .reviewgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .reviewgrid > div{padding:14px 16px;border-radius:16px;background:var(--surface-2);display:flex;flex-direction:column;gap:2px}
+  @media(max-width:620px){.reviewgrid{grid-template-columns:minmax(0,1fr)}}
+  .success{text-align:center;align-items:center}
+  .bigcheck{inline-size:76px;block-size:76px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;box-shadow:var(--glow)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf" style="color:var(--cyan)"></span><span>Concept prototype. No application is submitted and nothing you type is stored or sent.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown to prove the right-to-left layout. Full translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="phero" style="min-block-size:clamp(460px,40vw,560px)">
+        <img src="img/father.webp" alt="A father and son walking through a school gate, seen from behind">
+        <div class="phero__in hero-apply" style="max-width:none;inline-size:100%">
+          <div class="stack stack-5" style="max-width:620px">
+            <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Apply for support</span></nav>
+            <span class="chip chip--glass" style="align-self:start"><span data-icon="lock" data-size="14"></span> Private and confidential</span>
+            <h1 class="display h-hero">Asking is private. It stays private.</h1>
+            <p class="lede">Tell the charity what has changed and what the school is owed. Your documents go to case officers only. If your case is ever published, it carries a reference number &mdash; never your name.</p>
+            <div class="row">
+              <a class="btn btn--primary btn--lg" href="#eligibility">Check if you&rsquo;re eligible<span class="arr" data-icon="arrowup" data-size="14"></span></a>
+              <a class="btn btn--glass btn--lg" href="#app">Start application</a>
+            </div>
+          </div>
+          <div class="glass needcard">
+            <span class="h3">What you&rsquo;ll need</span>
+            <ul class="stack stack-3">
+              <li><span class="iconbox" data-icon="badge" data-size="18"></span>Emirates ID of the parent or guardian</li>
+              <li><span class="iconbox" data-icon="file" data-size="18"></span>The school&rsquo;s fee invoice or arrears statement</li>
+              <li><span class="iconbox" data-icon="coins" data-size="18"></span>Proof of income, or a letter explaining its loss</li>
+              <li><span class="iconbox" data-icon="building" data-size="18"></span>Tenancy contract or proof of address</li>
+            </ul>
+            <span class="xs mute-3">Photos of documents are fine. Medical records and bank statements are not requested.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell stack stack-6">
+      <div class="section-head">
+        <h2 class="display h1" style="max-width:14ch">What happens after you apply</h2>
+        <p class="lede">Most families hear back within 14 days. One case officer looks after you from start to finish.</p>
+      </div>
+      <div class="journey">
+        <div class="journey__i"><span class="iconbox iconbox--grad" data-icon="search"></span><span class="journey__n">Step 1 &middot; 2 minutes</span><span class="h3">Check eligibility</span><p class="sm muted">Four quick questions. No documents, and nothing is saved.</p></div>
+        <div class="journey__i"><span class="iconbox" data-icon="file"></span><span class="journey__n">Step 2 &middot; 15 minutes</span><span class="h3">Apply privately</span><p class="sm muted">Household details, the school, and a few documents. Save and return any time.</p></div>
+        <div class="journey__i"><span class="iconbox" data-icon="school"></span><span class="journey__n">Step 3 &middot; 3&ndash;5 days</span><span class="h3">We confirm with the school</span><p class="sm muted">The charity checks the amount owed and asks for a discount on your behalf.</p></div>
+        <div class="journey__i"><span class="iconbox iconbox--good" data-icon="check"></span><span class="journey__n">Step 4 &middot; next sitting</span><span class="h3">The committee decides</span><p class="sm muted">Funded privately, published anonymously with your consent, or declined with reasons.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper" id="eligibility">
+    <div class="shell split">
+      <div class="card card--raised formcard">
+        <div class="stack stack-2" style="margin-block-end:6px">
+          <span class="chip chip--brand" style="align-self:start">Step 1</span>
+          <h2 class="display h2">Is this the right route for you?</h2>
+          <p class="sm muted">Tap an answer to each question. Nothing you choose here is stored.</p>
+        </div>
+        <form id="elig" onsubmit="event.preventDefault()">
+          <div class="q"><span class="q__t">Is the child enrolled, or holding a place, at a school in the UAE?</span>
+            <div class="opts"><label class="opt"><input type="radio" name="q1" value="yes" checked><span>Yes, enrolled now</span></label>
+              <label class="opt"><input type="radio" name="q1" value="place"><span>Holding a place</span></label>
+              <label class="opt"><input type="radio" name="q1" value="no"><span>No</span></label></div></div>
+          <div class="q"><span class="q__t">What do you need help with?</span>
+            <div class="opts"><label class="opt"><input type="radio" name="q2" value="tuition" checked><span>Tuition fees</span></label>
+              <label class="opt"><input type="radio" name="q2" value="exam"><span>Exam fees</span></label>
+              <label class="opt"><input type="radio" name="q2" value="other"><span>Transport, books or uniform</span></label>
+              <label class="opt"><input type="radio" name="q2" value="else"><span>Something else</span></label></div></div>
+          <div class="q"><span class="q__t">Are you the child&rsquo;s parent or legal guardian?</span>
+            <div class="opts"><label class="opt"><input type="radio" name="q3" value="yes" checked><span>Yes</span></label>
+              <label class="opt"><input type="radio" name="q3" value="rel"><span>I&rsquo;m a relative</span></label>
+              <label class="opt"><input type="radio" name="q3" value="school"><span>I&rsquo;m from the school</span></label></div></div>
+          <div class="q"><span class="q__t">Do you already get help with this from another organisation?</span>
+            <div class="opts"><label class="opt"><input type="radio" name="q4" value="no" checked><span>No</span></label>
+              <label class="opt"><input type="radio" name="q4" value="part"><span>Yes, partly</span></label>
+              <label class="opt"><input type="radio" name="q4" value="unsure"><span>Not sure</span></label></div></div>
+        </form>
+      </div>
+      <div class="stack stack-5 sticky-col">
+        <div class="result result--yes" id="res" aria-live="polite"></div>
+        <div class="card stack stack-4">
+          <span class="h3">Our promise to you</span>
+          <ul class="check-list sm">
+            <li><span>No name, face, school or class is ever published.</span></li>
+            <li><span>Many approved cases are paid from the fund with no public page at all.</span></li>
+            <li><span>Money goes to the school. You never handle a payment.</span></li>
+            <li><span>A decline always comes with a reason and a right to appeal.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="app">
+    <div class="shell stack stack-7">
+      <div class="section-head">
+        <div class="stack stack-4"><span class="chip chip--brand" style="align-self:start">Step 2</span>
+          <h2 class="display h1">Your application</h2></div>
+        <p class="lede">Three short sections. It saves as you go, so you can gather documents and come back.</p>
+      </div>
+
+      <div class="appwrap" data-wizard>
+        <aside class="appside stack stack-5 sticky-col">
+          <div class="card stack stack-2" style="padding:10px">
+            <div class="vstep" data-pip><span class="vstep__n">1</span><div class="stack" style="gap:0"><strong class="sm">Household</strong><span class="xs">Who you are and what changed</span></div></div>
+            <div class="vstep" data-pip><span class="vstep__n">2</span><div class="stack" style="gap:0"><strong class="sm">Documents</strong><span class="xs">Evidence and consent</span></div></div>
+            <div class="vstep" data-pip><span class="vstep__n">3</span><div class="stack" style="gap:0"><strong class="sm">Review</strong><span class="xs">Check and submit</span></div></div>
+          </div>
+          <div class="card card--soft stack stack-3">
+            <span class="iconbox" data-icon="lock"></span>
+            <strong class="sm">Encrypted and private</strong>
+            <span class="xs muted">Only the case officers handling your file can open your documents, and every view is logged.</span>
+          </div>
+          <div class="card card--soft stack stack-3">
+            <span class="iconbox" data-icon="users"></span>
+            <strong class="sm">Need help filling this in?</strong>
+            <span class="xs muted">A case officer can call you, or your child&rsquo;s school can help you apply.</span>
+          </div>
+        </aside>
+
+        <div class="card card--raised formcard">
+          <div data-step class="stack stack-6">
+            <div class="stack stack-2"><span class="xs mute-3">Section 1 of 3</span><h3 class="display h2">Household and request</h3></div>
+            <div class="two">
+              <div class="field"><label for="gname">Your full name</label><input class="input" id="gname" autocomplete="name" value="Mariam A."></div>
+              <div class="field"><label for="grel">Relationship to the child</label><select class="select" id="grel"><option>Mother</option><option>Father</option><option>Legal guardian</option></select></div>
+              <div class="field"><label for="gphone">Mobile number</label><input class="input" id="gphone" inputmode="tel" value="+971 50 123 4567"></div>
+              <div class="field"><label for="gemirate">Emirate</label><select class="select" id="gemirate"><option>Sharjah</option><option>Dubai</option><option>Abu Dhabi</option><option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option></select></div>
+            </div>
+            <div class="field"><label for="gwhy">What changed in your circumstances?</label>
+              <textarea class="textarea" id="gwhy">My husband's contract ended in August and the second salary stopped. We have kept up with rent but not the school fees.</textarea>
+              <span class="hint">A few plain sentences is enough. Decisions are made on documents, and anything published is written by a case officer.</span></div>
+            <div class="rule"></div>
+            <div class="two">
+              <div class="field"><label for="gschool">School name</label><input class="input" id="gschool" value="Al Noor Private School"></div>
+              <div class="field"><label for="ggrade">Child&rsquo;s grade</label><select class="select" id="ggrade"><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select></div>
+              <div class="field"><label for="gterm">Fee period owed</label><select class="select" id="gterm"><option>Term 2 and Term 3, 2026/27</option><option>Term 2 only</option><option>Full year</option></select></div>
+              <div class="field"><label for="gamt">Amount the school says is owed</label><input class="input num" id="gamt" type="number" value="20000" inputmode="numeric"></div>
+            </div>
+            <div class="row-between"><span class="xs mute-3">Draft saved 11:02</span>
+              <button class="btn btn--primary btn--lg" data-next type="button">Save and continue<span class="arr" data-icon="arrowup" data-size="14"></span></button></div>
+          </div>
+
+          <div data-step class="stack stack-6" hidden>
+            <div class="stack stack-2"><span class="xs mute-3">Section 2 of 3</span><h3 class="display h2">Documents and consent</h3></div>
+            <div class="stack stack-3" id="docs"></div>
+            <div class="field"><label for="gother">Any other support you receive for this child</label>
+              <textarea class="textarea" id="gother" style="min-block-size:76px">The school has already applied a 10% sibling discount.</textarea>
+              <span class="hint">This is deducted before any amount is set, so a case is never funded twice.</span></div>
+            <div class="stack stack-3">
+              <span class="flabel">Consent</span>
+              <label class="choice"><input type="checkbox" checked><span class="sm">The charity may contact my child&rsquo;s school to confirm enrolment, the amount owed and where to pay.</span></label>
+              <label class="choice"><input type="checkbox" checked><span class="sm">The charity may keep my documents for as long as its record-keeping duties require.</span></label>
+              <label class="choice"><input type="checkbox" id="pubconsent"><span class="stack" style="gap:2px"><span class="sm"><strong>Optional:</strong> if approved, an anonymous version of my case may be published to raise funds.</span><span class="xs mute-3">Saying no does not affect your application. You can change this later.</span></span></label>
+            </div>
+            <div class="row-between"><button class="btn btn--line" data-prev type="button">Back</button>
+              <button class="btn btn--primary btn--lg" data-next type="button">Review application<span class="arr" data-icon="arrowup" data-size="14"></span></button></div>
+          </div>
+
+          <div data-step class="stack stack-6" hidden>
+            <div class="stack stack-2"><span class="xs mute-3">Section 3 of 3</span><h3 class="display h2">Check before you send</h3></div>
+            <div class="reviewgrid">
+              <div><span class="xs mute-3">Applicant</span><strong>Mariam A., mother</strong></div>
+              <div><span class="xs mute-3">Emirate</span><strong>Sharjah</strong></div>
+              <div><span class="xs mute-3">School</span><strong>Al Noor Private School</strong></div>
+              <div><span class="xs mute-3">Grade and period</span><strong>Grade 9 &middot; Term 2 and 3</strong></div>
+              <div><span class="xs mute-3">Amount owed</span><strong class="amount">AED 20,000</strong></div>
+              <div><span class="xs mute-3">Documents</span><strong>3 of 4 attached</strong></div>
+              <div><span class="xs mute-3">Other support</span><strong>10% sibling discount</strong></div>
+              <div><span class="xs mute-3">Public campaign</span><strong id="pubsum">Not consented</strong></div>
+            </div>
+            <div class="notice notice--brand"><svg class="notice__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              <span class="sm">You can submit now and add the missing document later. Your case officer will ask for it, and the review waits until it arrives.</span></div>
+            <div class="row-between"><button class="btn btn--line" data-prev type="button">Back</button>
+              <button class="btn btn--primary btn--lg" id="submit" type="button">Submit application<span class="arr" data-icon="arrowup" data-size="14"></span></button></div>
+          </div>
+
+          <div data-step class="stack stack-6" hidden>
+            <div class="stack stack-4 success">
+              <span class="bigcheck" data-icon="check" data-size="36"></span>
+              <h3 class="display h2">Application received</h3>
+              <p class="body center">Your reference is <strong class="num">APP-024</strong>. A case officer will be in touch within two working days. Nothing has been made public.</p>
+            </div>
+            <div class="card card--soft"><div class="trail" id="apptrail"></div></div>
+            <div class="row" style="justify-content:center"><a class="btn btn--dark btn--lg" href="my-numoo.html">Track your application<span class="arr" data-icon="arrowup" data-size="14"></span></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink">
+    <div class="glowbg glowbg--a" style="inset-block-start:-200px;inset-inline-end:-140px;opacity:.4"></div>
+    <div class="shell stack stack-7 z1">
+      <div class="section-head">
+        <h2 class="display h1" style="color:#fff;max-width:15ch">Who sees what you send</h2>
+        <p class="lede">Access is limited by role, and every time someone opens your file it is recorded.</p>
+      </div>
+      <div class="grid g-4">
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="users"></span><span class="h3" style="color:#fff">Your case officer</span><p class="sm muted">Sees your full file, so they can verify it and help you.</p></div>
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="school"></span><span class="h3" style="color:#fff">Your child&rsquo;s school</span><p class="sm muted">Confirms the fees owed. Never sees your income or documents.</p></div>
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="badge"></span><span class="h3" style="color:#fff">The committee</span><p class="sm muted">Reviews a summary of the evidence to make a decision.</p></div>
+        <div class="stack stack-3"><span class="iconbox iconbox--grad" data-icon="eye"></span><span class="h3" style="color:#fff">The public</span><p class="sm muted">Sees nothing unless you agree. Even then: no name, no face, no school.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell split">
+      <div class="faqside">
+        <h2 class="display h1">Questions families ask</h2>
+        <p class="body">Your child&rsquo;s school can also help you apply, or refer your family to the charity.</p>
+        <div class="contactcard">
+          <img src="img/volunteer.webp" alt="A charity team member at a reception desk" loading="lazy">
+          <div class="contactcard__in">
+            <span class="chip chip--glass" style="align-self:start"><span class="chip__dot" style="color:var(--good)"></span>Replies within one working day</span>
+            <strong class="h3" style="color:#fff;font-size:1.5rem">Talk to the charity&rsquo;s team</strong>
+            <div class="contactrow"><span>hello@[charity-domain].ae</span><span>Sun&ndash;Thu, 8am&ndash;5pm</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="faq">
+        <details open><summary>Will anyone know my family applied?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>No. Your application is seen only by the charity&rsquo;s case officers and committee. The school confirms fees but does not see your documents.</p></details>
+        <details><summary>Do I receive the money?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>No. Approved support is paid directly to the school against its invoice. You never need to handle or account for a payment.</p></details>
+        <details><summary>What if I don&rsquo;t have every document?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Submit what you have. Your case officer will tell you exactly what is still needed, and your application waits until it arrives.</p></details>
+        <details><summary>Do I have to agree to a public campaign?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>No. Many cases are paid from the Education Fund with no public page. Saying no never affects the decision.</p></details>
+        <details><summary>Will I be asked to give back later?<span class="pm" data-icon="plus" data-size="16"></span></summary>
+          <p>Only if you want to. Any future pledge to give back is voluntary and never a condition of support.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO;
+
+  function result() {
+    var v = function (n) { var r = document.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ""; };
+    var q1 = v("q1"), q2 = v("q2"), q3 = v("q3"), q4 = v("q4"), box = document.getElementById("res");
+    var no = q1 === "no" || q2 === "else", part = !no && (q3 !== "yes" || q4 !== "no");
+    box.className = "result " + (no ? "result--no" : part ? "result--part" : "result--yes");
+    box.innerHTML = no
+      ? '<span class="iconbox" data-icon="search"></span><strong class="h3">This programme may not fit</strong><p class="sm muted">The pilot covers school costs for children enrolled in the UAE. A case officer can still point you to another organisation.</p><a class="btn btn--line" href="how-it-works.html" style="align-self:start">See how support works</a>'
+      : part
+      ? '<span class="iconbox" style="background:#fff;color:var(--warn)" data-icon="file"></span><strong class="h3">You can apply, with one extra step</strong><p class="sm">' + (q3 !== "yes" ? "The parent or legal guardian will need to confirm consent separately. " : "") + (q4 !== "no" ? "Existing support is reconciled first, so a case is never funded twice." : "") + '</p><a class="btn btn--primary" href="#app" style="align-self:start">Start your application</a>'
+      : '<span class="iconbox" style="background:#fff;color:var(--good)" data-icon="check"></span><strong class="h3">Good news, you can apply</strong><p class="sm">This looks like the right route. The application takes about 15 minutes and saves as you go.</p><a class="btn btn--primary" href="#app" style="align-self:start">Start your application<span class="arr" data-icon="arrowup" data-size="14"></span></a>';
+    N.qsa("[data-icon]", box).forEach(function (n) { n.innerHTML = N.icon(n.dataset.icon, Number(n.dataset.size) || 22); });
+  }
+  N.qsa("#elig input").forEach(function (i) { i.addEventListener("change", result); });
+  result();
+
+  var docs = [["Emirates ID, parent or guardian", "ID-front.jpg", 1], ["School fee invoice or arrears statement", "invoice-term2.pdf", 1],
+              ["Proof of income, or letter of loss", "end-of-contract.pdf", 1], ["Tenancy contract or proof of address", "", 0]];
+  document.getElementById("docs").innerHTML = docs.map(function (d) {
+    return '<label class="drop' + (d[2] ? ' drop--done' : '') + '"><span class="iconbox ' + (d[2] ? 'iconbox--good' : '') + '" style="inline-size:44px;block-size:44px;border-radius:13px">' +
+      N.icon(d[2] ? "check" : "plus", 20) + '</span><span class="stack" style="gap:2px;min-width:0;flex:1"><strong class="sm">' + d[0] + '</strong>' +
+      '<span class="xs mute-3">' + (d[2] ? d[1] + ' · scanned and encrypted' : 'Tap to upload a photo or PDF') + '</span></span>' +
+      (d[2] ? '<span class="chip chip--good">Attached</span>' : '<span class="chip">Needed</span><input type="file" aria-label="Upload ' + d[0] + '">') + '</label>';
+  }).join("");
+
+  document.getElementById("pubconsent").addEventListener("change", function (e) {
+    document.getElementById("pubsum").textContent = e.target.checked ? "Consented, anonymous only" : "Not consented";
+  });
+
+  document.getElementById("apptrail").innerHTML = N.trailHTML([
+    ["Submitted", "02 Nov 2026", "Received and queued for a case officer", "done"],
+    ["Case officer assigned", "Within 2 working days", "You can message them from My numoo", "pending"],
+    ["School verification", "3–5 working days", "We contact the school directly", "pending"],
+    ["Committee decision", "Next sitting", "Recorded with reasons", "pending"]
+  ]);
+
+  var root = document.querySelector("[data-wizard]");
+  document.getElementById("submit").addEventListener("click", function () {
+    N.qsa("[data-step]", root).forEach(function (s, i) { s.hidden = i !== 3; });
+    N.qsa("[data-pip]", root).forEach(function (p) { p.dataset.state = "done"; });
+    window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 100 });
+  });
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Impact and reporting</title>
+<link rel="stylesheet" href="assets/numoo.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demobar"><div class="shell"><span class="inf"></span><span>Concept prototype. Every figure on this page is fictional and is here to show the reporting shape.</span></div></div>
+<div class="demobar" id="langnote" hidden style="background:var(--brand-wash);color:var(--brand)"><div class="shell"><span>Arabic is shown here to prove the right-to-left layout. Translation is drafted at build.</span></div></div>
+<header id="hdr"></header>
+
+<main id="main">
+  <section style="padding-block:8px 0">
+    <div class="shell">
+      <div class="phero ">
+        <img src="img/bus.webp" alt="">
+        <div class="phero__in">
+          <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Impact</span></nav>
+          <h1 class="display h-hero">Received. Paid. Confirmed.</h1>
+          <p class="lede">Three questions, three different numbers. A platform that reports only the first is describing its own popularity, not anyone&rsquo;s education.</p>
+          <span class="chip chip--glass" style="align-self:start">Reporting period 1 Nov 2025 &ndash; 31 Oct 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band--tight" style="padding-block:24px 0">
+    <div class="shell grid g-4" id="kpis"></div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell grid g-wide">
+      <div class="card stack stack-5">
+        <div class="stack stack-2">
+          <h2 class="h3">Paid to schools each month</h2>
+          <p class="xs mute-3">Disbursements only. Donations received in a month are not counted here, because money frequently arrives in one month and settles in the next.</p>
+        </div>
+        <div class="chart" id="c-month"></div>
+        <details class="sm">
+          <summary class="mute-3" style="cursor:pointer">Show the figures as a table</summary>
+          <div class="tablewrap" style="margin-block-start:12px"><table class="t" id="t-month"><caption class="sr">Monthly disbursement</caption>
+            <thead><tr><th>Month</th><th style="text-align:end">Paid to schools</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </div>
+
+      <div class="card stack stack-5">
+        <div class="stack stack-2">
+          <h2 class="h3">Where the money came from</h2>
+          <p class="xs mute-3">Share of all funds disbursed in the period, by the route the money arrived through.</p>
+        </div>
+        <div class="stack stack-4">
+          <div class="segbar" id="seg" role="img" aria-label="Funding sources: public campaigns 45 percent, Education Fund 28 percent, auction proceeds 19 percent, corporate programmes 8 percent."></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <details class="sm">
+          <summary class="mute-3" style="cursor:pointer">Show the figures as a table</summary>
+          <div class="tablewrap" style="margin-block-start:12px"><table class="t" id="t-src"><caption class="sr">Funding sources</caption>
+            <thead><tr><th>Route</th><th style="text-align:end">Amount</th><th style="text-align:end">Share</th></tr></thead><tbody></tbody></table></div>
+        </details>
+        <p class="xs mute-3">Auction proceeds are net of disclosed sale costs. Gross auction revenue was AED 791,100.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight band--surface" style="border-block:1px solid var(--line)">
+    <div class="shell stack stack-6">
+      <h2 class="display h2">Operating figures</h2>
+      <div class="tablewrap"><table class="t"><caption class="sr">Operating figures for the period</caption>
+        <thead><tr><th>Measure</th><th style="text-align:end">Value</th><th>What it counts</th></tr></thead>
+        <tbody>
+          <tr><td>Applications received</td><td class="n" style="text-align:end">437</td><td class="sm muted">Submitted and queued for triage, including later withdrawals.</td></tr>
+          <tr><td>Approved</td><td class="n" style="text-align:end">412</td><td class="sm muted">A recorded committee decision in favour, whether funded publicly or from the fund.</td></tr>
+          <tr><td>Declined</td><td class="n" style="text-align:end">19</td><td class="sm muted">Each with a reason code. Six were appealed, two overturned.</td></tr>
+          <tr><td>Withdrawn by the family</td><td class="n" style="text-align:end">6</td><td class="sm muted">Circumstances changed or support was found elsewhere.</td></tr>
+          <tr><td>Median approval to payment</td><td class="n" style="text-align:end">9 days</td><td class="sm muted">From the committee decision to cleared funds at the school.</td></tr>
+          <tr><td>Paid within the agreed window</td><td class="n" style="text-align:end">96%</td><td class="sm muted">Against the payment date promised to the school when the case was approved.</td></tr>
+          <tr><td>Schools paid</td><td class="n" style="text-align:end">61</td><td class="sm muted">Distinct schools and examination boards with a verified payment destination.</td></tr>
+          <tr><td>Continuity confirmed</td><td class="n" style="text-align:end">389</td><td class="sm muted">School confirmed the student remained enrolled at the end of the funded period.</td></tr>
+          <tr><td>Continuity not confirmed</td><td class="n" style="text-align:end">23</td><td class="sm muted">Transferred, left the country, or the school did not respond. Reported rather than omitted.</td></tr>
+          <tr><td>Operating cost ratio</td><td class="n" style="text-align:end">7.4%</td><td class="sm muted">Charity operating cost against total funds applied, excluding auction sale costs shown separately.</td></tr>
+          <tr><td>Lots sold / offered</td><td class="n" style="text-align:end">148 / 203</td><td class="sm muted">Unsold lots were returned or relisted under the donor's agreed terms.</td></tr>
+          <tr><td>Refunds and chargebacks</td><td class="n" style="text-align:end">AED 14,200</td><td class="sm muted">Returned to donors on withdrawn or overfunded cases. Never absorbed into another case.</td></tr>
+        </tbody></table></div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <div class="shell split">
+      <div class="stack stack-5">
+        <h2 class="display h2">One case, start to finish</h2>
+        <p class="body">A published impact record is the closed version of a case file: what was needed, what was raised, what was paid, and what the school confirmed afterwards. It carries no names and no grades.</p>
+        <dl class="dl card">
+          <dt>Case</dt><dd class="num">EDU-033</dd>
+          <dt>Need</dt><dd>Examination entry, six subjects</dd>
+          <dt>Approved amount</dt><dd class="amount">AED 6,500</dd>
+          <dt>Funded by</dt><dd>24 donors in 6 days</dd>
+          <dt>Paid to</dt><dd>Examination board, ref PAY-5518</dd>
+          <dt>Confirmed</dt><dd>Entry accepted for the May series</dd>
+        </dl>
+        <a class="btn btn--line" href="case.html" style="align-self:start">Open the case record</a>
+      </div>
+      <div class="card"><div class="trail" id="trail"></div></div>
+    </div>
+  </section>
+
+  <section class="band band--ink band--tight">
+    <div class="shell stack stack-6">
+      <div class="split" style="align-items:end">
+        <h2 class="display h2" style="color:#fff">How these numbers are counted</h2>
+        <p class="body sm" style="color:#A9C8DD">Reporting rules decided before the first campaign, so that a good quarter and a bad one are measured the same way.</p>
+      </div>
+      <div class="grid g-3">
+        <div class="stack stack-3"><span class="h3" style="color:#fff">An allocation is not income</span>
+          <p class="sm" style="color:#A9C8DD">Moving money from a pooled fund to a case is reported as an allocation. It never appears again as a new donation.</p></div>
+        <div class="stack stack-3"><span class="h3" style="color:#fff">Pledges are not cash</span>
+          <p class="sm" style="color:#A9C8DD">A corporate commitment is reported as pledged until it is received. The two figures are never combined.</p></div>
+        <div class="stack stack-3"><span class="h3" style="color:#fff">Gross is not net</span>
+          <p class="sm" style="color:#A9C8DD">A lot that sold for AED 2,200 did not deliver AED 2,200 to a case. Sale costs are disclosed and deducted before the figure is reported.</p></div>
+        <div class="stack stack-3"><span class="h3" style="color:#fff">A payment is not an outcome</span>
+          <p class="sm" style="color:#A9C8DD">Paying a school proves the money moved. Continuity is a separate measure, confirmed later by the school.</p></div>
+        <div class="stack stack-3"><span class="h3" style="color:#fff">Failures are counted too</span>
+          <p class="sm" style="color:#A9C8DD">Unconfirmed continuity, unsold lots, refunds and declined cases all appear. A report with no bad numbers is not a report.</p></div>
+        <div class="stack stack-3"><span class="h3" style="color:#fff">No child is a case study</span>
+          <p class="sm" style="color:#A9C8DD">No photographs, names or grades are collected for marketing. Stories are never used to raise more than the verified need.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="ftr"></footer>
+
+<script>
+window.pageInit = function () {
+  var N = window.NUMOO, K = N.IMPACT;
+
+  document.getElementById("kpis").innerHTML = [
+    [N.money(3184500), "disbursed to schools and examination boards"],
+    [N.plain(412), "students whose funded period was paid in full"],
+    [N.plain(389), "cases where the school confirmed continuity afterwards"],
+    ["7.4%", "operating cost against total funds applied"]
+  ].map(function (k) {
+    return '<div class="statcard"><span class="kpi__v grad-text">' + k[0] + '</span><span class="kpi__l">' + k[1] + '</span></div>';
+  }).join("");
+
+  /* ---- monthly disbursement, single series ---- */
+  var months = [["Nov", 112000], ["Dec", 138000], ["Jan", 196000], ["Feb", 174000], ["Mar", 221000], ["Apr", 243000],
+                ["May", 268000], ["Jun", 192000], ["Jul", 96000], ["Aug", 310000], ["Sep", 428000], ["Oct", 396000]];
+  var W = 560, Hh = 232, L = 44, R = 6, T = 18, B = 34, maxY = 450000;
+  var pw = W - L - R, ph = Hh - T - B, gap = 3, bw = (pw - gap * (months.length - 1)) / months.length;
+  var y = function (v) { return T + ph - (v / maxY) * ph; };
+  var maxI = months.reduce(function (a, m, i) { return m[1] > months[a][1] ? i : a; }, 0);
+
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + Hh + '" role="img" aria-label="Monthly amounts paid to schools, November 2025 to October 2026. Lowest July at 96,000 dirhams, highest September at 428,000 dirhams.">';
+  [0, 150000, 300000, 450000].forEach(function (v) {
+    svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/>' +
+      '<text class="axis" x="' + (L - 7) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + (v ? (v / 1000) + 'k' : '0') + '</text>';
+  });
+  months.forEach(function (m, i) {
+    var x = L + i * (bw + gap), h = ph - (y(m[1]) - T);
+    svg += '<rect class="bar" x="' + x + '" y="' + y(m[1]) + '" width="' + bw + '" height="' + h + '" rx="4"/>' +
+      '<rect class="hit" x="' + x + '" y="' + T + '" width="' + bw + '" height="' + ph + '" data-i="' + i + '" tabindex="0" role="button" aria-label="' + m[0] + ': ' + N.money(m[1]) + '"/>' +
+      '<text class="axis" x="' + (x + bw / 2) + '" y="' + (Hh - 16) + '" text-anchor="middle">' + m[0] + '</text>';
+    if (i === maxI || i === months.length - 1) {
+      svg += '<text class="dlabel" x="' + (x + bw / 2) + '" y="' + (y(m[1]) - 7) + '" text-anchor="middle">' + Math.round(m[1] / 1000) + 'k</text>';
+    }
+  });
+  svg += '<text class="axis" x="' + L + '" y="' + (Hh - 3) + '">AED, 2025–26</text></svg><div class="tip" id="tip1"></div>';
+  document.getElementById("c-month").innerHTML = svg;
+
+  var tip = document.getElementById("tip1"), host = document.getElementById("c-month");
+  function showTip(i, rect) {
+    var m = months[i], box = host.getBoundingClientRect();
+    tip.innerHTML = m[0] + " 2026<br><b>" + N.money(m[1]) + "</b> paid to schools";
+    tip.dataset.on = "true";
+    var r = rect.getBoundingClientRect();
+    tip.style.insetInlineStart = Math.max(0, Math.min(box.width - tip.offsetWidth, r.left - box.left + r.width / 2 - tip.offsetWidth / 2)) + "px";
+    tip.style.insetBlockStart = (r.top - box.top + 12) + "px";
+  }
+  N.qsa("#c-month .hit").forEach(function (h) {
+    h.addEventListener("mouseenter", function () { showTip(+h.dataset.i, h); });
+    h.addEventListener("focus", function () { showTip(+h.dataset.i, h); });
+    h.addEventListener("mouseleave", function () { tip.dataset.on = "false"; });
+    h.addEventListener("blur", function () { tip.dataset.on = "false"; });
+  });
+
+  document.querySelector("#t-month tbody").innerHTML = months.map(function (m) {
+    return '<tr><td>' + m[0] + '</td><td class="n" style="text-align:end">' + N.money(m[1]) + '</td></tr>';
+  }).join("") + '<tr><td><strong>Period total</strong></td><td class="n" style="text-align:end"><strong>' +
+    N.money(months.reduce(function (s, m) { return s + m[1]; }, 0)) + '</strong></td></tr>';
+
+  /* ---- funding sources, categorical ---- */
+  var src = [
+    ["Public campaigns", 1432000, "var(--c1)"],
+    ["Education Fund, allocated", 891700, "var(--c3)"],
+    ["Auction proceeds, net", 612300, "var(--c2)"],
+    ["Corporate programmes", 248500, "var(--c4)"]
+  ];
+  var total = src.reduce(function (s, r) { return s + r[1]; }, 0);
+  document.getElementById("seg").innerHTML = src.map(function (r) {
+    var p = r[1] / total * 100;
+    return '<div style="flex:' + p + ';background:' + r[2] + '" title="' + r[0] + '"></div>';
+  }).join("");
+  document.getElementById("legend").innerHTML = src.map(function (r) {
+    return '<span class="legend__i"><span class="legend__s" style="background:' + r[2] + '"></span>' +
+      '<span>' + r[0] + ' <span class="num mute-3">' + (r[1] / total * 100).toFixed(0) + '%</span></span></span>';
+  }).join("");
+  document.querySelector("#t-src tbody").innerHTML = src.map(function (r) {
+    return '<tr><td>' + r[0] + '</td><td class="n" style="text-align:end">' + N.money(r[1]) +
+      '</td><td class="n" style="text-align:end">' + (r[1] / total * 100).toFixed(1) + '%</td></tr>';
+  }).join("") + '<tr><td><strong>Total applied</strong></td><td class="n" style="text-align:end"><strong>' + N.money(total) +
+    '</strong></td><td class="n" style="text-align:end">100%</td></tr>';
+
+  var trail = [
+    ["Campaign opened", "22 Oct 2026", "Anonymised case published with guardian consent", "done"],
+    ["Target reached", "28 Oct 2026", "AED 6,500 from 24 donors. Collection paused", "done"],
+    ["Approved for payment", "29 Oct 2026", "Prepared and authorised by two members of staff", "done"],
+    ["Examination board paid", "30 Oct 2026", "Ref PAY-5518 to the board's verified account", "done"],
+    ["Reconciled", "31 Oct 2026", "Matched to the bank statement, no variance", "done"],
+    ["Entry confirmed", "02 Nov 2026", "Six subjects entered. No grades collected", "done"]
+  ];
+  document.getElementById("trail").innerHTML = trail.map(function (t) {
+    return '<div class="trail__step" data-state="done"><div class="trail__dot">✓</div>' +
+      '<div class="stack stack-2"><div class="trail__head"><strong class="sm">' + t[0] + '</strong><span class="xs mute-3 num">' + t[1] + '</span></div>' +
+      '<span class="xs muted">' + t[2] + '</span></div></div>';
+  }).join("");
+};
+</script>
+<script src="assets/numoo.js"></script>
+</body>
+</html>
