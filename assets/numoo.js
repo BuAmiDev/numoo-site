@@ -243,7 +243,7 @@
         fcol("Give", [["cases.html", "Browse cases"], ["auctions.html", "Live auctions"], ["give-item.html", "Donate an item"], ["corporate.html", "Corporate giving"]]) +
         fcol("Get support", [["apply.html", "Apply for support"], ["how-it-works.html", "How it works"], ["trust.html", "Privacy and dignity"], ["login.html", "Sign in or create account"], ["my-numoo.html", "My numoo"]]) +
         fcol("Accountability", [["impact.html", "Impact report"], ["trust.html", "How money is handled"], ["workspace.html", "Staff workspace"], ["design.html", "Design system"]]) +
-        '</div><div class="ftr__base"><span>Operated by [charity name]. numoo is the technology platform. Concept prototype with fictional data.</span>' +
+        '</div><div class="ftr__base"><span>Operated by Tarahum Charity Foundation. numoo is the technology platform. Concept prototype with fictional data.</span>' +
         '<div class="social"><a href="#" aria-label="Instagram">' + icon("ig", 15) + 'Instagram</a><a href="#" aria-label="X">' + icon("x", 15) + 'X</a><a href="#" aria-label="LinkedIn">' + icon("in", 15) + 'LinkedIn</a></div></div></div></div>';
     }
     function fcol(h, links) {
